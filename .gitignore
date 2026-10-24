@@ -1,0 +1,21 @@
+.env*
+.secrets/
+.venv/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+*.py[cod]
+*.egg-info/
+
+# Large inputs, outputs, and model artifacts
+data/*
+!data/README.md
+weights/
+checkpoints/
+runs/
+*.mp4
+*.avi
+*.mov
+*.zip
+
+# Generated report files can be added deliberately when ready.
