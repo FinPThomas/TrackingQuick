@@ -67,10 +67,13 @@ def sequence(seed=42, frames=180, condition="mixed"):
         size_m = .6
         width = FOCAL*size_m/z
         frame = sky.copy()
-        draw_target(frame, (u, v), width, angle)
-        draw_target(frame, (520-43*t, 70+10*np.sin(t)), 24, -.12, "bird")
-        visible = True
-        tag = "clean"
+        present = condition != "empty"
+        if present:
+            draw_target(frame, (u, v), width, angle)
+        # Negative test includes a bird large enough to pass the proposal stage.
+        draw_target(frame, (520-43*t, 70+10*np.sin(t)), 42 if condition in ("empty", "distractor") else 24, -.12, "bird")
+        visible = present
+        tag = condition if condition in ("empty", "distractor") else "clean"
         if condition in ("mixed", "light") and 30 <= i < 65:
             frame = np.clip(frame.astype(float)*(.75+.05*np.sin(t)), 0, 255).astype(np.uint8)
             tag = "light"
@@ -84,4 +87,4 @@ def sequence(seed=42, frames=180, condition="mixed"):
             frame[y0:y1, x0:x1] = sky[y0:y1, x0:x1]
             visible, tag = False, "occlusion"
         yield frame, {"frame": i, "t": t, "u": u, "v": v, "z": z,
-                      "visible": visible, "condition": tag, "size_m": size_m}
+                      "visible": visible, "present": present, "condition": tag, "size_m": size_m}

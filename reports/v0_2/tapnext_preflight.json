@@ -1,0 +1,13 @@
+{
+  "artifact_url": "https://github.com/healthonrails/annolid/releases/download/v1.6.6/tapnext.onnx",
+  "artifact_bytes": 984253311,
+  "sha256": "4fca0951802f0b745de254930c880938a74bf8b54b10786fc68d0ab4ba5c5300",
+  "free_disk_bytes": 114409472,
+  "required_download_free_bytes": 1684253311,
+  "model_present": false,
+  "download_attempted": false,
+  "inference_executed": false,
+  "gpu_requirement": "unmeasured",
+  "source": "https://annolid.com/portal/tapnext/",
+  "status": "blocked_storage"
+}

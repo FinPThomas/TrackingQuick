@@ -1,5 +1,8 @@
 # Research decisions and limits
 
+These are the original v0.1 design notes. See the [v0.2 review](REVIEW_V0_2.md)
+for the current pipeline, measurements and verified TAPNext storage blocker.
+
 This quick project prioritizes a measured CPU prototype and correct handling of uncertainty. The proposed complete system remains a calibrated stereo rig, a drone-specific detector, point tracking between detections, and uncertainty-aware filtering. The runnable experiment implements the permitted 2D proof of concept plus a conditional scale experiment.
 
 ## DINOv2 and detection

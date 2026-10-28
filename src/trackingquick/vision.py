@@ -1,7 +1,6 @@
 """CPU DINOv2 appearance verification and forward/backward point flow."""
 from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor
-from concurrent.futures import ThreadPoolExecutor
 import time
 import cv2
 import numpy as np
@@ -127,17 +126,23 @@ class PointFlow:
 
 
 class AsyncVerifier:
-    """At most one outstanding crop. Old-generation/stale verdicts are discarded."""
-    def __init__(self, verifier, max_age_frames=23):
+    """One crop in flight. Stamps and max_age must use the same units.
+
+    The legacy experiment uses frame indices; the v0.2 pipeline uses seconds.
+    """
+    def __init__(self, verifier, max_age=23):
         self.verifier = verifier
-        self.max_age_frames = max_age_frames
+        self.max_age = max_age
         self.pool = ThreadPoolExecutor(max_workers=1)
         self.pending = None
+        self.stats = dict(submitted=0, busy=0, completed=0, stale=0, wrong_generation=0)
 
     def submit(self, crop, frame, generation):
         if self.pending is not None:
+            self.stats["busy"] += 1
             return False
         self.pending = (self.pool.submit(self.verifier.score, crop.copy()), frame, generation)
+        self.stats["submitted"] += 1
         return True
 
     def poll(self, frame, generation):
@@ -146,35 +151,12 @@ class AsyncVerifier:
         future, source_frame, source_generation = self.pending
         self.pending = None
         score = future.result()  # Worker errors are reported; never silently ignored.
-        if source_generation != generation or frame-source_frame > self.max_age_frames:
+        self.stats["completed"] += 1
+        if source_generation != generation:
+            self.stats["wrong_generation"] += 1
             return None
-        return score, source_frame
-
-    def close(self):
-        self.pool.shutdown(wait=True, cancel_futures=True)
-
-
-class AsyncVerifier:
-    """At most one outstanding crop. Old-generation/stale verdicts are discarded."""
-    def __init__(self, verifier, max_age_frames=23):
-        self.verifier = verifier
-        self.max_age_frames = max_age_frames
-        self.pool = ThreadPoolExecutor(max_workers=1)
-        self.pending = None
-
-    def submit(self, crop, frame, generation):
-        if self.pending is not None:
-            return False
-        self.pending = (self.pool.submit(self.verifier.score, crop.copy()), frame, generation)
-        return True
-
-    def poll(self, frame, generation):
-        if self.pending is None or not self.pending[0].done():
-            return None
-        future, source_frame, source_generation = self.pending
-        self.pending = None
-        score = future.result()  # Worker errors are reported; never silently ignored.
-        if source_generation != generation or frame-source_frame > self.max_age_frames:
+        if frame-source_frame > self.max_age:
+            self.stats["stale"] += 1
             return None
         return score, source_frame
 

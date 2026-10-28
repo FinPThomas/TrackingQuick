@@ -60,11 +60,11 @@ def test_invalid_time_and_featureless_frame():
 
 
 def test_async_verdict_rejects_old_tracks_and_expired_frames():
-    worker = object.__new__(AsyncVerifier)
-    worker.max_age_frames = 23
+    worker = AsyncVerifier(None, max_age=23)
     for source_generation, now, generation, expected in [(1, 5, 1, (.2, 0)), (1, 5, 2, None), (1, 30, 1, None)]:
         future = Future()
         future.set_result(.2)
         worker.pending = (future, 0, source_generation)
         assert worker.poll(now, generation) == expected
         assert worker.pending is None
+    worker.close()

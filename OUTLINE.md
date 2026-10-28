@@ -1,7 +1,7 @@
 # SPAICE Technical Challenge: 3D Tracking of a Single Drone
 
 **Project:** TrackingQuick
-**Stage:** initial design outline retained; a synthetic v0.1 and measured research report now exist. See reports/RESEARCH.md and docs/RESEARCH_NOTES.md.
+**Stage:** initial design outline retained. The current v0.2 adds timestamped video tracking and failure-focused evaluation; see [README](README.md) and the [review](docs/REVIEW_V0_2.md). The PDF and reports/RESEARCH.md remain v0.1 snapshots.
 
 ## Mission and deliverables
 
