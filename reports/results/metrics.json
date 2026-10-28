@@ -1,0 +1,243 @@
+{
+  "reference_calibration": {
+    "threshold": 0.00712093710899353,
+    "validation_accuracy": 1.0,
+    "train_count": 16,
+    "validation_count": 12,
+    "score_definition": "cosine_to_positive_prototype - cosine_to_negative_prototype; not a probability"
+  },
+  "dino_input_size": 112,
+  "hardware": {
+    "processor": "AMD64 Family 23 Model 96 Stepping 1, AuthenticAMD",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "onnx_threads": 2
+  },
+  "runs": [
+    {
+      "seed": 42,
+      "mode": "proposals_kf",
+      "frames": 180,
+      "visible_frames": 165,
+      "visible_center_rmse_px": 3.7050504859764017,
+      "occluded_center_rmse_px": 9.338796326452394,
+      "visible_track_coverage": 1.0,
+      "false_association_frames": 0,
+      "detection_precision_8px": 1.0,
+      "scheduled_detection_recall_8px": 0.9393939393939394,
+      "depth_absrel": 0.04498609845866352,
+      "conditional_depth_interval_coverage": 1.0,
+      "dino_calls": 0,
+      "first_confirmed_time_s": 0.0,
+      "max_scheduler_lateness_ms": null,
+      "p50_ms": 0.21170004038140178,
+      "p95_ms": 3.592230041977015,
+      "p99_ms": 21.56806802726359,
+      "timing_scope": "main-thread per-frame processing; excludes acquisition, encoding and paced input waiting; background-verification delay reported separately"
+    },
+    {
+      "seed": 42,
+      "mode": "dino_kf",
+      "frames": 180,
+      "visible_frames": 165,
+      "visible_center_rmse_px": 3.830013760391221,
+      "occluded_center_rmse_px": 9.361565948001692,
+      "visible_track_coverage": 1.0,
+      "false_association_frames": 0,
+      "detection_precision_8px": 1.0,
+      "scheduled_detection_recall_8px": 0.9090909090909091,
+      "depth_absrel": 0.05116959759722979,
+      "conditional_depth_interval_coverage": 1.0,
+      "dino_calls": 12,
+      "first_confirmed_time_s": 0.0,
+      "max_scheduler_lateness_ms": null,
+      "p50_ms": 0.2485500299371779,
+      "p95_ms": 97.04279498546381,
+      "p99_ms": 200.54492496885365,
+      "timing_scope": "main-thread per-frame processing; excludes acquisition, encoding and paced input waiting; background-verification delay reported separately"
+    },
+    {
+      "seed": 42,
+      "mode": "dino_flow_kf",
+      "frames": 180,
+      "visible_frames": 165,
+      "visible_center_rmse_px": 2.7065847935283442,
+      "occluded_center_rmse_px": 7.5410161182196696,
+      "visible_track_coverage": 1.0,
+      "false_association_frames": 0,
+      "detection_precision_8px": 1.0,
+      "scheduled_detection_recall_8px": 0.9090909090909091,
+      "depth_absrel": 0.05116959759722979,
+      "conditional_depth_interval_coverage": 1.0,
+      "dino_calls": 12,
+      "first_confirmed_time_s": 0.0,
+      "max_scheduler_lateness_ms": null,
+      "p50_ms": 6.834950007032603,
+      "p95_ms": 114.97018000227389,
+      "p99_ms": 145.43457698775455,
+      "timing_scope": "main-thread per-frame processing; excludes acquisition, encoding and paced input waiting; background-verification delay reported separately"
+    },
+    {
+      "seed": 42,
+      "mode": "dino_async_flow_kf",
+      "frames": 180,
+      "visible_frames": 165,
+      "visible_center_rmse_px": 2.758855029395632,
+      "occluded_center_rmse_px": 7.486161485539521,
+      "visible_track_coverage": 0.9696969696969697,
+      "false_association_frames": 0,
+      "detection_precision_8px": 1.0,
+      "scheduled_detection_recall_8px": 0.8787878787878788,
+      "depth_absrel": 0.04701464148115124,
+      "conditional_depth_interval_coverage": 1.0,
+      "dino_calls": 11,
+      "first_confirmed_time_s": 0.03333333333333333,
+      "max_scheduler_lateness_ms": 127.99556657361488,
+      "p50_ms": 7.081400079187006,
+      "p95_ms": 22.097475046757598,
+      "p99_ms": 25.67373999510893,
+      "timing_scope": "main-thread per-frame processing; excludes acquisition, encoding and paced input waiting; background-verification delay reported separately"
+    },
+    {
+      "seed": 73,
+      "mode": "proposals_kf",
+      "frames": 180,
+      "visible_frames": 165,
+      "visible_center_rmse_px": 2.990883850365048,
+      "occluded_center_rmse_px": 8.756209571073867,
+      "visible_track_coverage": 1.0,
+      "false_association_frames": 0,
+      "detection_precision_8px": 1.0,
+      "scheduled_detection_recall_8px": 1.0,
+      "depth_absrel": 0.021421021504502282,
+      "conditional_depth_interval_coverage": 1.0,
+      "dino_calls": 0,
+      "first_confirmed_time_s": 0.0,
+      "max_scheduler_lateness_ms": null,
+      "p50_ms": 0.21959998412057757,
+      "p95_ms": 3.6964699102099954,
+      "p99_ms": 5.056471037678423,
+      "timing_scope": "main-thread per-frame processing; excludes acquisition, encoding and paced input waiting; background-verification delay reported separately"
+    },
+    {
+      "seed": 73,
+      "mode": "dino_kf",
+      "frames": 180,
+      "visible_frames": 165,
+      "visible_center_rmse_px": 3.411904458314044,
+      "occluded_center_rmse_px": 8.95145429857181,
+      "visible_track_coverage": 1.0,
+      "false_association_frames": 0,
+      "detection_precision_8px": 1.0,
+      "scheduled_detection_recall_8px": 0.8787878787878788,
+      "depth_absrel": 0.02225586070457279,
+      "conditional_depth_interval_coverage": 1.0,
+      "dino_calls": 12,
+      "first_confirmed_time_s": 0.0,
+      "max_scheduler_lateness_ms": null,
+      "p50_ms": 0.219999928958714,
+      "p95_ms": 114.15908009512346,
+      "p99_ms": 142.36588894040327,
+      "timing_scope": "main-thread per-frame processing; excludes acquisition, encoding and paced input waiting; background-verification delay reported separately"
+    },
+    {
+      "seed": 73,
+      "mode": "dino_flow_kf",
+      "frames": 180,
+      "visible_frames": 165,
+      "visible_center_rmse_px": 2.0908213903367523,
+      "occluded_center_rmse_px": 7.165232452151544,
+      "visible_track_coverage": 1.0,
+      "false_association_frames": 0,
+      "detection_precision_8px": 1.0,
+      "scheduled_detection_recall_8px": 0.8787878787878788,
+      "depth_absrel": 0.02225586070457279,
+      "conditional_depth_interval_coverage": 1.0,
+      "dino_calls": 12,
+      "first_confirmed_time_s": 0.0,
+      "max_scheduler_lateness_ms": null,
+      "p50_ms": 6.658500002231449,
+      "p95_ms": 113.94562497735023,
+      "p99_ms": 134.54355396912436,
+      "timing_scope": "main-thread per-frame processing; excludes acquisition, encoding and paced input waiting; background-verification delay reported separately"
+    },
+    {
+      "seed": 73,
+      "mode": "dino_async_flow_kf",
+      "frames": 180,
+      "visible_frames": 165,
+      "visible_center_rmse_px": 1.7295716150557572,
+      "occluded_center_rmse_px": 4.806427187818578,
+      "visible_track_coverage": 0.8181818181818182,
+      "false_association_frames": 0,
+      "detection_precision_8px": 1.0,
+      "scheduled_detection_recall_8px": 0.7878787878787878,
+      "depth_absrel": 0.031325621143365526,
+      "conditional_depth_interval_coverage": 1.0,
+      "dino_calls": 16,
+      "first_confirmed_time_s": 0.16666666666666666,
+      "max_scheduler_lateness_ms": 12.920299964025439,
+      "p50_ms": 6.075299985241145,
+      "p95_ms": 24.01224494678899,
+      "p99_ms": 30.044293039245577,
+      "timing_scope": "main-thread per-frame processing; excludes acquisition, encoding and paced input waiting; background-verification delay reported separately"
+    }
+  ],
+  "dino_crop_latency": {
+    "p50_ms": 108.00425003981218,
+    "p95_ms": 190.96986500662734,
+    "p99_ms": 202.8575099806767,
+    "warmup_excluded": 1
+  },
+  "size_prior_sensitivity": [
+    {
+      "assumed_width_m": 0.4,
+      "true_width_m": 0.6,
+      "depth_absrel": 0.30941599186009017,
+      "method": "exact multiplicative sensitivity with observations held fixed"
+    },
+    {
+      "assumed_width_m": 0.6,
+      "true_width_m": 0.6,
+      "depth_absrel": 0.04701464148115124,
+      "method": "exact multiplicative sensitivity with observations held fixed"
+    },
+    {
+      "assumed_width_m": 0.9,
+      "true_width_m": 0.6,
+      "depth_absrel": 0.5538140183147969,
+      "method": "exact multiplicative sensitivity with observations held fixed"
+    }
+  ],
+  "flow_matching": {
+    "first_100_loss": 1.0259626067515986,
+    "last_100_loss": 0.5634855477685599,
+    "training_and_evaluation_seconds": 3.2063927999697626,
+    "test_cases": 150,
+    "samples_per_case": 64,
+    "euler_steps": 16,
+    "flow_mean_rmse_px": 6.402651593360428,
+    "constant_velocity_rmse_px": 7.21310562619363,
+    "marginal_95_coverage": 0.8833333333333333,
+    "energy_score_px": 4.238199825886355,
+    "batched_ms_per_case": 6.008224667360385,
+    "scope": "independent synthetic residual-motion toy; not an image tracker; not fused into live observations"
+  },
+  "stereo_geometry": [
+    {
+      "depth_m": 20,
+      "sigma_z_m": 0.6285393610547089
+    },
+    {
+      "depth_m": 50,
+      "sigma_z_m": 3.9283710065919304
+    },
+    {
+      "depth_m": 100,
+      "sigma_z_m": 15.713484026367722
+    },
+    {
+      "depth_m": 200,
+      "sigma_z_m": 62.853936105470886
+    }
+  ]
+}

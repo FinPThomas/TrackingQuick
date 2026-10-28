@@ -1,7 +1,7 @@
 # SPAICE Technical Challenge: 3D Tracking of a Single Drone
 
 **Project:** TrackingQuick
-**Stage:** outline only; architecture and thresholds are proposals, not measured results.
+**Stage:** initial design outline retained; a synthetic v0.1 and measured research report now exist. See reports/RESEARCH.md and docs/RESEARCH_NOTES.md.
 
 ## Mission and deliverables
 
@@ -81,4 +81,4 @@ The requested submission is a short **PDF report** plus a **Python proof of conc
 5. Add calibrated stereo, triangulation, and 3D filtering when cameras/calibration or suitable multiview data are available.
 6. Write the final PDF with diagrams, measured tradeoffs, failure cases, limitations, and reproducible run instructions. Package code and artifacts for GitHub or ZIP delivery.
 
-**Current status:** these steps are planned only. No implementation, dataset download, model training, PDF, or performance result exists yet.
+**Current status:** synthetic CPU prototype, DINOv2 verification, Kalman/scale and flow-matching experiments are complete. Real-data YOLO training, TAPNext and full stereo tracking remain research options. See reports/RESEARCH.md for measured evidence and limits.

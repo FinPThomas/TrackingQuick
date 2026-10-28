@@ -19,3 +19,7 @@ runs/
 *.zip
 
 # Generated report files can be added deliberately when ready.
+
+tmp/
+.cache/
+*.partial
