@@ -1,28 +1,26 @@
 # TrackingQuick
 
-A CPU pipeline for tracking a single drone in video, combining
+A CPU pipeline for tracking a single drone in real video, combining
 **DINOv2 appearance verification, Lucas-Kanade point tracking and Kalman filtering**.
 It produces image-space trajectories, track status and timing measurements, with
 optional depth estimates based on a physical-size prior.
 
-Version 0.2 supports fixed-camera video with a user-specified initial target box,
-controlled synthetic evaluation and [evaluation on real footage](#real-footage-evaluation).
-The [system outline](OUTLINE.md) describes the proposed extension to calibrated
-3D tracking.
+The tracker is trained and tested on [real footage of drones, birds, airplanes and
+helicopters](#real-footage-evaluation). It supports fixed-camera video with a
+user-specified initial target box. A [synthetic benchmark](#synthetic-benchmark)
+provides controlled failure cases, and the [system outline](OUTLINE.md) describes
+the proposed extension to calibrated 3D tracking.
 
-![Tracker output on a synthetic clip through low light, motion blur and occlusion](docs/images/tracking_demo.gif)
+![Placeholder for tracker output on a held-out real clip](docs/images/placeholder_svanstrom.png)
 
-*Recorded output of the retire-after-two-negatives policy on mixed clip 42, played
-at the clip's 30 Hz timing with every second frame shown. The track holds through
-low light and a full occlusion, but is dropped during motion blur and reacquired.
-This clip scores 83.6% in the table below.*
+*Tracker output on a held-out real clip.*
 
 ## Setup
 
 Python 3.12+ and [uv](https://docs.astral.sh/uv/):
 
 ```powershell
-uv sync --locked --extra research
+uv sync --locked --extra research --extra real
 uv run python scripts/fetch_dino.py
 uv run pytest -q
 ```
@@ -59,6 +57,131 @@ verdict with `suspect` status. Positive verification has a finite lifetime.
 Optional depth requires both `--focal-px` and `--width-m`. Camera-relative X/Y use
 an image-center principal point. Depth estimates are conditional on these camera
 and size assumptions.
+
+## Real-footage evaluation
+
+The verifier is trained, and the tracker is tested, on two public datasets filmed
+with real aircraft.
+
+| Dataset | Role | Footage | Labels | License |
+| --- | --- | --- | --- | --- |
+| [Svanström et al.](https://github.com/DroneDetectionThesis/Drone-detection-dataset) | Training, validation and held-out test | 285 visible-light 10 s clips at 640x512 of drones, birds, airplanes and helicopters | Per-frame boxes | CC0-1.0 |
+| [Albl et al.](https://github.com/CenekAlbl/drone-tracking-datasets) | External test only | Datasets 1 and 2, cameras 0, 1 and 3, at 1920x1080 | Per-frame drone centers | CC BY-NC-SA 4.0 |
+
+```powershell
+uv run python scripts/prepare_svanstrom.py
+uv run trackingquick-real train
+uv run trackingquick-real evaluate --split test
+uv run trackingquick-real albl --data data/albl
+```
+
+Footage is stored locally under `data/` and is excluded from version control.
+
+### Training on real crops
+
+The verifier is a class-balanced logistic regression on frozen DINOv2 features. It
+replaces the reference taken from the first frame of each clip, and uses the same
+scoring interface as the prototype verifier.
+
+Clips are split in blocks within each class and distance bin, because neighbouring
+clip numbers can come from one recording session. This gives 170 training, 55
+validation and 54 test clips. Six further clips were used to diagnose failures and
+tune proposals, and are excluded from both training and testing.
+
+Positives are drone crops, jittered to approximate the tighter boxes that
+foreground proposals produce. Negatives are birds, airplanes, helicopters, random
+background and real false proposals from the motion detector. Regularization and
+the decision threshold are selected on validation clips only.
+
+| Verifier, held-out crops | Balanced accuracy | Recall | False-positive rate |
+| --- | ---: | ---: | ---: |
+| Mean prototypes | *pending* | *pending* | *pending* |
+| Linear probe | *pending* | *pending* | *pending* |
+
+### Tracker policies
+
+All policies retire a track after two negative verdicts.
+
+| Policy | Proposals | Identity reference |
+| --- | --- | --- |
+| Flow + Kalman | Original motion proposals | None |
+| First-frame DINO | Original motion proposals | First-frame target and background |
+| Target proposals + first-frame DINO | Target-scaled, with contrast search | First-frame target and background |
+| Target proposals + trained verifier | Target-scaled, with contrast search | Trained on real crops |
+
+### Held-out results
+
+Each drone clip is initialized from its labelled first-frame box. Missing outputs
+count as failures. Bird, airplane and helicopter clips contain no drone, so any
+output is a false alarm.
+
+| Policy | Coverage | Within 8 px | Within 16 px | Inside label box |
+| --- | ---: | ---: | ---: | ---: |
+| Flow + Kalman | *pending* | *pending* | *pending* | *pending* |
+| First-frame DINO | *pending* | *pending* | *pending* | *pending* |
+| Target proposals + first-frame DINO | *pending* | *pending* | *pending* | *pending* |
+| Target proposals + trained verifier | *pending* | *pending* | *pending* | *pending* |
+
+| Distance bin | Clips | Flow + Kalman, within 16 px | Trained verifier, within 16 px |
+| --- | ---: | ---: | ---: |
+| Close | *pending* | *pending* | *pending* |
+| Medium | *pending* | *pending* | *pending* |
+| Distant | *pending* | *pending* | *pending* |
+
+| Drone-free class | Clips | Flow + Kalman false alarms | Trained verifier false alarms |
+| --- | ---: | ---: | ---: |
+| Bird | *pending* | *pending* | *pending* |
+| Airplane | *pending* | *pending* | *pending* |
+| Helicopter | *pending* | *pending* | *pending* |
+
+### External test
+
+The Albl footage comes from different cameras, sites and aircraft, and is never
+used for fitting. Three evenly spaced 300-frame windows are taken from each of six
+camera views, for 18 windows. The labels give centers only, so the initial box is
+derived from local contrast around the labelled center.
+
+| Policy | Coverage | Within 8 px | Within 16 px | Within 32 px | p95 processing |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Flow + Kalman | *pending* | *pending* | *pending* | *pending* | *pending* |
+| First-frame DINO | *pending* | *pending* | *pending* | *pending* | *pending* |
+| Target proposals + first-frame DINO | *pending* | *pending* | *pending* | *pending* | *pending* |
+| Target proposals + trained verifier | *pending* | *pending* | *pending* | *pending* | *pending* |
+
+![Placeholder for tracker output on the external dataset](docs/images/placeholder_albl.png)
+
+*Tracker output on an external clip. Footage from
+[Albl et al.](https://github.com/CenekAlbl/drone-tracking-datasets), CC BY-NC-SA 4.0.
+This figure is distributed under the same license.*
+
+### Known issues on real footage
+
+These failure modes were identified by inspecting tracks on the development clips.
+
+| Issue | Cause | Status |
+| --- | --- | --- |
+| Tiny targets are never proposed | The drone covers only a few pixels and falls below the original minimum blob size. | Addressed by minimum sizes that scale with the target. |
+| Hovering drones disappear | Background subtraction absorbs a stationary target, and the track retires without detections. | Partly addressed by a contrast search near the track. Verification of very small crops remains weak. |
+| Tracks restart on ground clutter | After a loss the tracker restarted on the largest moving blob, often vegetation. | Addressed by restarting near the last position and rejecting oversized blobs. |
+| Large drones fragment | Loose size limits split a close drone into propeller-sized blobs. | Addressed by scaling mask closing with the target size. |
+| Point flow drifts between detections | Flow follows parts of the airframe, and errors grow until the next accepted detection. | Open. |
+| First-frame references are fragile | One crop cannot represent a drone across viewpoints, and the threshold is uncalibrated. | Addressed by the trained verifier. |
+
+![Placeholder for failure examples on real footage](docs/images/placeholder_failures.png)
+
+*Representative failures on real footage.*
+
+### Limitations
+
+- The six development clips informed the proposal changes, so they do not count as
+  evidence. Reported results come from clips that were not inspected.
+- Clips are split by block rather than by recorded flight, because flight identity
+  is not available. Some session overlap between splits may remain.
+- Center error in pixels is not comparable across resolutions or target sizes.
+- 49 Svanström clips are attributed by the dataset authors to a third-party video
+  channel. Frames from those clips are not reproduced here.
+- The video runner `trackingquick-video` still uses first-frame references. The
+  trained verifier is currently available through `trackingquick-real`.
 
 ## Architecture
 
@@ -101,7 +224,7 @@ the target. Solid paths run on the frame loop. Dotted paths are asynchronous.
 | Configurable retirement after one or two negatives | The evaluation shows a real tradeoff between continuity and false alarms, so the policy is exposed rather than fixed. |
 | Monocular depth only with an explicit size prior | A single camera cannot separate range from target size. Depth is disabled unless the user supplies both assumptions. |
 | Stereo proposed for metric 3D | Two synchronized views give range by triangulation without a size prior. Routines and tests exist, but full stereo tracking awaits calibrated data. |
-| Synthetic evaluation first | Exact labels and repeatable failure cases are available without licensing constraints. The cost is that results do not transfer to real footage. |
+| Synthetic benchmark alongside real footage | Exact labels and repeatable failures isolate causes that real clips mix together. Its scores do not transfer to real footage, so it is not used to judge real performance. |
 
 ### Innovations
 
@@ -172,7 +295,24 @@ implemented directly in NumPy, samples multiple possible motions during occlusio
 rather than a single constant-velocity future. It is an experiment and does not
 feed the tracker.
 
-## Evaluating tracking
+## Synthetic benchmark
+
+The synthetic clips are a controlled complement to the real-footage evaluation.
+They are not used to train the real-footage verifier, and their scores do not
+predict performance on real video. They serve three purposes:
+
+- **Isolating causes.** Lighting, blur and occlusion are applied one at a time with
+  exact labels, whereas real clips mix them together.
+- **Testing rare cases on demand.** A drone beside a larger bird, and a bird with no
+  drone at all, can be generated whenever needed.
+- **Quick checks.** The clips are deterministic and need no dataset download.
+
+![Tracker output on a synthetic clip through low light, motion blur and occlusion](docs/images/tracking_demo.gif)
+
+*Recorded output of the retire-after-two-negatives policy on mixed clip 42, played
+at the clip's 30 Hz timing with every second frame shown. The track holds through
+low light and a full occlusion, but is dropped during motion blur and reacquired.
+This clip scores 83.6% in the table below.*
 
 ```powershell
 uv run trackingquick-evaluate
@@ -265,137 +405,6 @@ The flow-matching experiment samples multiple residual motions where a constant
 velocity model gives one.
 
 ![Flow-matching residual hypotheses](reports/results/flow_matching.png)
-
-## Real-footage evaluation
-
-The synthetic benchmark controls failure cases but cannot show how the tracker
-behaves on real drones. The pipeline is therefore also trained and tested on two
-public datasets filmed with real aircraft.
-
-| Dataset | Role | Footage | Labels | License |
-| --- | --- | --- | --- | --- |
-| [Svanström et al.](https://github.com/DroneDetectionThesis/Drone-detection-dataset) | Training, validation and held-out test | 285 visible-light 10 s clips at 640x512 of drones, birds, airplanes and helicopters | Per-frame boxes | CC0-1.0 |
-| [Albl et al.](https://github.com/CenekAlbl/drone-tracking-datasets) | External test only | Datasets 1 and 2, cameras 0, 1 and 3, at 1920x1080 | Per-frame drone centers | CC BY-NC-SA 4.0 |
-
-```powershell
-uv sync --locked --extra research --extra real
-uv run python scripts/prepare_svanstrom.py
-uv run trackingquick-real train
-uv run trackingquick-real evaluate --split test
-uv run trackingquick-real albl --data data/albl
-```
-
-Footage is stored locally under `data/` and is excluded from version control.
-
-### Training on real crops
-
-The verifier is a class-balanced logistic regression on frozen DINOv2 features. It
-replaces the reference taken from the first frame of each clip, and uses the same
-scoring interface as the prototype verifier.
-
-Clips are split in blocks within each class and distance bin, because neighbouring
-clip numbers can come from one recording session. This gives 170 training, 55
-validation and 54 test clips. Six further clips were used to diagnose failures and
-tune proposals, and are excluded from both training and testing.
-
-Positives are drone crops, jittered to approximate the tighter boxes that
-foreground proposals produce. Negatives are birds, airplanes, helicopters, random
-background and real false proposals from the motion detector. Regularization and
-the decision threshold are selected on validation clips only.
-
-| Verifier, held-out crops | Balanced accuracy | Recall | False-positive rate |
-| --- | ---: | ---: | ---: |
-| Mean prototypes | *pending* | *pending* | *pending* |
-| Linear probe | *pending* | *pending* | *pending* |
-
-### Tracker policies
-
-All policies retire a track after two negative verdicts.
-
-| Policy | Proposals | Identity reference |
-| --- | --- | --- |
-| Flow + Kalman | Original motion proposals | None |
-| First-frame DINO | Original motion proposals | First-frame target and background |
-| Target proposals + first-frame DINO | Target-scaled, with contrast search | First-frame target and background |
-| Target proposals + trained verifier | Target-scaled, with contrast search | Trained on real crops |
-
-### Held-out results
-
-Each drone clip is initialized from its labelled first-frame box. Missing outputs
-count as failures. Bird, airplane and helicopter clips contain no drone, so any
-output is a false alarm.
-
-| Policy | Coverage | Within 8 px | Within 16 px | Inside label box |
-| --- | ---: | ---: | ---: | ---: |
-| Flow + Kalman | *pending* | *pending* | *pending* | *pending* |
-| First-frame DINO | *pending* | *pending* | *pending* | *pending* |
-| Target proposals + first-frame DINO | *pending* | *pending* | *pending* | *pending* |
-| Target proposals + trained verifier | *pending* | *pending* | *pending* | *pending* |
-
-| Distance bin | Clips | Flow + Kalman, within 16 px | Trained verifier, within 16 px |
-| --- | ---: | ---: | ---: |
-| Close | *pending* | *pending* | *pending* |
-| Medium | *pending* | *pending* | *pending* |
-| Distant | *pending* | *pending* | *pending* |
-
-| Drone-free class | Clips | Flow + Kalman false alarms | Trained verifier false alarms |
-| --- | ---: | ---: | ---: |
-| Bird | *pending* | *pending* | *pending* |
-| Airplane | *pending* | *pending* | *pending* |
-| Helicopter | *pending* | *pending* | *pending* |
-
-![Placeholder for tracker output on a held-out real clip](docs/images/placeholder_svanstrom.png)
-
-*Tracker output on a held-out real clip.*
-
-### External test
-
-The Albl footage comes from different cameras, sites and aircraft, and is never
-used for fitting. Three evenly spaced 300-frame windows are taken from each of six
-camera views, for 18 windows. The labels give centers only, so the initial box is
-derived from local contrast around the labelled center.
-
-| Policy | Coverage | Within 8 px | Within 16 px | Within 32 px | p95 processing |
-| --- | ---: | ---: | ---: | ---: | ---: |
-| Flow + Kalman | *pending* | *pending* | *pending* | *pending* | *pending* |
-| First-frame DINO | *pending* | *pending* | *pending* | *pending* | *pending* |
-| Target proposals + first-frame DINO | *pending* | *pending* | *pending* | *pending* | *pending* |
-| Target proposals + trained verifier | *pending* | *pending* | *pending* | *pending* | *pending* |
-
-![Placeholder for tracker output on the external dataset](docs/images/placeholder_albl.png)
-
-*Tracker output on an external clip. Footage from
-[Albl et al.](https://github.com/CenekAlbl/drone-tracking-datasets), CC BY-NC-SA 4.0.
-This figure is distributed under the same license.*
-
-### Known issues on real footage
-
-These failure modes were identified by inspecting tracks on the development clips.
-
-| Issue | Cause | Status |
-| --- | --- | --- |
-| Tiny targets are never proposed | The drone covers only a few pixels and falls below the original minimum blob size. | Addressed by minimum sizes that scale with the target. |
-| Hovering drones disappear | Background subtraction absorbs a stationary target, and the track retires without detections. | Partly addressed by a contrast search near the track. Verification of very small crops remains weak. |
-| Tracks restart on ground clutter | After a loss the tracker restarted on the largest moving blob, often vegetation. | Addressed by restarting near the last position and rejecting oversized blobs. |
-| Large drones fragment | Loose size limits split a close drone into propeller-sized blobs. | Addressed by scaling mask closing with the target size. |
-| Point flow drifts between detections | Flow follows parts of the airframe, and errors grow until the next accepted detection. | Open. |
-| First-frame references are fragile | One crop cannot represent a drone across viewpoints, and the threshold is uncalibrated. | Addressed by the trained verifier. |
-
-![Placeholder for failure examples on real footage](docs/images/placeholder_failures.png)
-
-*Representative failures on real footage.*
-
-### Limitations
-
-- The six development clips informed the proposal changes, so they do not count as
-  evidence. Reported results come from clips that were not inspected.
-- Clips are split by block rather than by recorded flight, because flight identity
-  is not available. Some session overlap between splits may remain.
-- Center error in pixels is not comparable across resolutions or target sizes.
-- 49 Svanström clips are attributed by the dataset authors to a third-party video
-  channel. Frames from those clips are not reproduced here.
-- The video runner `trackingquick-video` still uses first-frame references. The
-  trained verifier is currently available through `trackingquick-real`.
 
 ## Open-source components
 
