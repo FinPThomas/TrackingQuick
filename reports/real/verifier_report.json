@@ -1,0 +1,54 @@
+{
+  "prototype_val": {
+    "balanced_accuracy": 0.8169466459038357,
+    "recall": 0.9661971830985916,
+    "false_positive_rate": 0.3323038912909203,
+    "crops": 1974,
+    "positive_crops": 355
+  },
+  "probe_candidates": {
+    "0.0001": {
+      "balanced_accuracy": 0.9238122993675456,
+      "recall": 0.9211267605633803,
+      "false_positive_rate": 0.07350216182828907,
+      "crops": 1974,
+      "positive_crops": 355
+    },
+    "0.001": {
+      "balanced_accuracy": 0.904889124742277,
+      "recall": 0.9549295774647887,
+      "false_positive_rate": 0.14515132798023472,
+      "crops": 1974,
+      "positive_crops": 355
+    },
+    "0.01": {
+      "balanced_accuracy": 0.8664442491887707,
+      "recall": 0.9323943661971831,
+      "false_positive_rate": 0.19950586781964175,
+      "crops": 1974,
+      "positive_crops": 355
+    },
+    "0.1": {
+      "balanced_accuracy": 0.8348363187152563,
+      "recall": 0.8,
+      "false_positive_rate": 0.13032736256948735,
+      "crops": 1974,
+      "positive_crops": 355
+    }
+  },
+  "selected_penalty": 0.0001,
+  "probe_test": {
+    "balanced_accuracy": 0.8242454758167224,
+    "recall": 0.7368421052631579,
+    "false_positive_rate": 0.088351153629713,
+    "crops": 2119,
+    "positive_crops": 342
+  },
+  "prototype_test": {
+    "balanced_accuracy": 0.771196773588445,
+    "recall": 0.8333333333333334,
+    "false_positive_rate": 0.29093978615644345,
+    "crops": 2119,
+    "positive_crops": 342
+  }
+}

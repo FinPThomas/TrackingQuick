@@ -26,6 +26,8 @@ class Config:
     focal_px: float | None = None
     width_m: float | None = None
     size_log_sigma: float = .30
+    min_crop_px: int = 0
+    reacquire_near_last: bool = False
 
     def __post_init__(self):
         if not np.isfinite(self.fps) or self.fps <= 0:
@@ -73,7 +75,8 @@ def replay(frames, config, verifier=None, proposal_fn=proposals, initial_box=Non
     flow, pixel, depth = PointFlow(), None, None
     generation = 0
     last_direct = last_detect = last_submit = -np.inf
-    previous_time = first_source_time = None
+    previous_time = first_source_time = last_center = None
+    set_focus = getattr(proposal_fn, "set_focus", None)
     wall_start = time.perf_counter()
     banned = []
     rows = []
@@ -122,12 +125,21 @@ def replay(frames, config, verifier=None, proposal_fn=proposals, initial_box=Non
             selected = None
             if pixel is None or t-last_detect >= config.detector_period_s-1e-9:
                 stamp = time.perf_counter()
+                if set_focus:
+                    set_focus(pixel.x[:2] if pixel is not None else last_center)
                 candidates = list(proposal_fn(image))
                 last_detect = t
                 if packet.index == 0 and initial_box is not None:
                     candidates.insert(0, tuple(initial_box))
                 else:
-                    candidates.sort(key=lambda b: pixel.distance([b[0]+b[2]/2, b[1]+b[3]/2]) if pixel else -b[2])
+                    def rank(b):
+                        center = [b[0]+b[2]/2, b[1]+b[3]/2]
+                        if pixel is not None:
+                            return pixel.distance(center)
+                        if config.reacquire_near_last and last_center is not None:
+                            return float(np.hypot(center[0]-last_center[0], center[1]-last_center[1]))
+                        return -b[2]
+                    candidates.sort(key=rank)
                 banned = [(center, expiry) for center, expiry in banned if expiry > t]
                 for box in candidates:
                     x, y, w, h = box
@@ -161,13 +173,15 @@ def replay(frames, config, verifier=None, proposal_fn=proposals, initial_box=Non
                             flow.seed(image, selected)
                             stage["flow_ms"] += (time.perf_counter()-stamp)*1000
                         if worker and (not identity.valid(t) or identity.failures or t-last_submit >= config.verification_period_s-1e-9):
-                            if worker.submit(crop_box(image, selected), t, generation):
+                            if worker.submit(crop_box(image, selected, config.min_crop_px), t, generation):
                                 last_submit = t
             if pixel is not None and status != "detected" and flow_measurement is not None:
                 stamp = time.perf_counter()
                 if pixel.update(*flow_measurement):
                     status = "flow"
                 stage["filter_ms"] += (time.perf_counter()-stamp)*1000
+            if pixel is not None:
+                last_center = pixel.x[:2].copy()
             confirmed = pixel is not None and (verifier is None or identity.valid(t))
             u = v = z = low = high = x_m = y_m = None
             if confirmed:

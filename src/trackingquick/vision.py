@@ -18,9 +18,9 @@ def proposals(frame):
     return [(x, y, w, h) for x, y, w, h in boxes if 8 <= w <= 100 and 3 <= h <= 60]
 
 
-def crop_box(image, box):
+def crop_box(image, box, min_side=0):
     x, y, w, h = box
-    side = max(w, h)*1.65
+    side = max(max(w, h)*1.65, min_side)
     cx, cy = x+w/2, y+h/2
     x0, y0 = max(0, int(cx-side/2)), max(0, int(cy-side/2))
     x1, y1 = min(image.shape[1], int(cx+side/2)+1), min(image.shape[0], int(cy+side/2)+1)
