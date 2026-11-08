@@ -82,16 +82,6 @@ def close_up(frames, index, title):
     return captioned(crop, f"{title}: {outcome(row, truth)}")
 
 
-def full_frame(frames, index, title, color):
-    image, truth, row = frames[index]
-    image = image.copy()
-    output = output_of(row)
-    if output is not None:
-        reticle(image, output, color, 24)
-    print(f"{title}: frame {index}, {outcome(row, truth)}")
-    return captioned(image, f"{title}: {outcome(row, truth)}", 18)
-
-
 def save_png(array, name):
     Image.fromarray(array).save(OUTPUT/name, optimize=True)
 
@@ -153,9 +143,6 @@ def main():
                    close_up(mixed, 78, "Motion blur"), close_up(mixed, 122, "Full occlusion"),
                    close_up(mixed, 150, "After occlusion"), close_up(mixed, 95, "Motion blur, track dropped")], 3),
              "conditions.png")
-    save_png(grid([full_frame(distractor_flow, 90, "Flow + Kalman", RED), full_frame(distractor, 90, "+ DINO", GREEN),
-                   full_frame(empty_flow, 60, "Flow + Kalman, bird only", RED), full_frame(empty, 60, "+ DINO, bird only", GREEN)], 2),
-             "distractor_comparison.png")
     comparison_gif(distractor_flow, distractor, "distractor_comparison.gif")
     comparison_gif(empty_flow, empty, "bird_only_comparison.gif")
     augmentation_sheet("augmentation.png")
