@@ -1,23 +1,21 @@
-# SPAICE Technical Challenge: 3D Tracking of a Single Drone
+# System Outline: 3D Tracking of a Single Drone
 
 **Project:** TrackingQuick
 **Stage:** initial design outline retained. The current v0.2 adds timestamped video tracking and failure-focused evaluation; see [README](README.md) and the [review](docs/REVIEW_V0_2.md). The PDF and reports/RESEARCH.md remain v0.1 snapshots.
 
-## Mission and deliverables
+## Goal
 
-Design a real-time, visual-only perception system for a fixed or gimbaled ground camera. It must detect one flying drone and estimate its camera-relative 3D position `(x, y, z)` as the drone changes altitude, range, orientation, background, and lighting.
+The goal is a real-time, visual-only perception system for a fixed or gimbaled ground camera. It detects one flying drone and estimates its camera-relative 3D position `(x, y, z)` as the drone changes altitude, range, orientation, background, and lighting.
 
-The requested submission is a short **PDF report** plus a **Python proof of concept v0.1** delivered through GitHub or PDF plus code ZIP. The report has no page limit. The proof of concept only needs **2D detection and tracking** on a public dataset or synthetic data. The goal is clear engineering reasoning about sensing, autonomy, latency, simplicity, and failure modes; it is not a request to train a perfect model.
-
-## 1. System design overview — proposed report section
+## 1. System design overview
 
 - **Primary visual setup:** synchronized, calibrated stereo RGB cameras with global shutters, a rigid known baseline, and lenses chosen for the required field of view and target pixel size. Mount both cameras on the same fixed head or gimbal. Record accurate frame timestamps and, for a gimbal, orientation/encoder telemetry. The 3D output remains in a defined camera frame; gimbal motion must be compensated before temporal filtering or world-frame reporting.
 - **Why stereo:** two simultaneous views provide metric depth by triangulation. A single moving drone viewed by a fixed monocular camera has scale/depth ambiguity without a known target size or other prior. An optional wider view can help reacquire a fast target outside the narrow tracking field of view, at extra hardware and compute cost.
 - **Range/accuracy tradeoff:** focal length and resolution determine the drone's pixel footprint; stereo baseline and pixel localization accuracy determine disparity and depth uncertainty, which increases sharply at long range. Specify an operating range only after testing actual optics, baseline, and target sizes. At poor disparity, report high uncertainty or bearing-only tracking rather than a confident metric range.
 - **Calibration:** estimate each camera's intrinsics and distortion, stereo rotation/translation and baseline, rectification maps, and timestamp offset. Check calibration again after mounting or gimbal changes. Transform triangulated points to the stated camera coordinate convention; keep calibration version and uncertainty with results.
-- **Operational constraints:** measure capture-to-output latency, detection recall at small angular sizes, tracking continuity, and compute/power cost on the target device. Prefer lightweight inference and deadline-aware scheduling. The PDF should show a latency budget and measured percentiles once hardware is chosen.
+- **Operational constraints:** measure capture-to-output latency, detection recall at small angular sizes, tracking continuity, and compute/power cost on the target device. Prefer lightweight inference and deadline-aware scheduling. A latency budget and measured percentiles should be reported once hardware is chosen.
 
-## 2. Algorithmic approach — proposed report section
+## 2. Algorithmic approach
 
 ### 2D detection and model agreement
 
@@ -43,12 +41,12 @@ The requested submission is a short **PDF report** plus a **Python proof of conc
 ### Version 0.1 proof of concept
 
 - Python/OpenCV pipeline for one video or image sequence: load frames and optional 2D labels, detect the drone, track its 2D center/box over time, and export an annotated video plus CSV/JSON track with timestamps and `observed/predicted/lost` state.
-- Start with a compact YOLO baseline and a Kalman filter. Add DINOv2 crop verification only if a measured comparison shows a useful precision/latency tradeoff. No metric 3D claim is required for v0.1.
+- Start with a compact YOLO baseline and a Kalman filter. Add DINOv2 crop verification only if a measured comparison shows a useful precision/latency tradeoff. v0.1 makes no metric 3D claim.
 - Keep dataset conversion, inference, tracking, and evaluation separate so the detector and verifier can be swapped without changing track logic.
 
-## 3. Failure modes and robustness — proposed report section
+## 3. Failure modes and robustness
 
-| Challenge | Planned response and remaining limit |
+| Failure mode | Planned response and remaining limit |
 | --- | --- |
 | Partial/full occlusion | Predict through short gaps with growing covariance; use reacquisition gates and a timeout. Long occlusion can break identity. |
 | Small/far drone | Choose optics for target pixels; use a high-resolution ROI around prediction and scheduled full-frame scans. Depth may become unobservable. |
@@ -58,7 +56,7 @@ The requested submission is a short **PDF report** plus a **Python proof of conc
 | Stereo mismatch / calibration drift | Epipolar and reprojection checks, calibration checks, uncertainty-aware rejection, and bearing-only fallback. |
 | Gimbal motion / asynchronous views | Timestamp and pose compensation; reject stereo pairs with uncorrected motion or large time offset. |
 
-## 4. Further improvements with more sensors — proposed report section
+## 4. Further improvements with more sensors
 
 - **Radar** for coarse range/range-rate and all-weather cueing, **thermal** for visibility in darkness or against difficult RGB backgrounds, and optionally **acoustic** cues for sector-level detection. Each adds cost, calibration, synchronization, and false-alarm modes.
 - Transform all observations into a common frame and time base. Use a centralized EKF/UKF with sensor-specific observation functions and covariances, or track-to-track fusion when raw measurements cannot be shared. Gate associations and avoid counting correlated camera observations twice.
@@ -67,7 +65,7 @@ The requested submission is a short **PDF report** plus a **Python proof of conc
 ## 5. Data, augmentation, and evaluation plan
 
 - Candidate source: [Cenek Albl et al., multiview drone tracking datasets](https://github.com/CenekAlbl/drone-tracking-datasets). Its README lists 2D labels for datasets 1–4, synchronization and camera locations for dataset 3, and a harder dataset 4 with moving clouds. Dataset 3 is a candidate for later 3D checks; datasets 1–4 can support 2D v0.1 after checking actual files and annotation format. Dataset 5 has multiple drones and no listed 2D labels, so it is outside the initial single-drone proof of concept.
-- The repository's [CC BY-NC-SA 4.0 license](https://github.com/CenekAlbl/drone-tracking-datasets/blob/master/LICENSE) includes noncommercial and attribution/share-alike conditions. Confirm that the intended challenge submission and any derived images/weights comply before downloading, augmenting, or redistributing data. Keep large source videos and derived frames out of Git.
+- The repository's [CC BY-NC-SA 4.0 license](https://github.com/CenekAlbl/drone-tracking-datasets/blob/master/LICENSE) includes noncommercial and attribution/share-alike conditions. Confirm that the intended use and any derived images/weights comply before downloading, augmenting, or redistributing data. Keep large source videos and derived frames out of Git.
 - Split by flight/sequence and preferably camera/session before augmentation to avoid adjacent-frame leakage. Document provenance and conditions for every split.
 - Train-only augmentation candidates: synthetic partial occluders, varied exposure/contrast/gamma, backlight and haze, sensor noise, realistic directional motion blur at several lengths, and changes in apparent drone size. Transform labels consistently; keep unaugmented real holdouts for evaluation. Include difficult negatives such as birds/cloud fragments if permitted by source licenses.
 - Compare detector-only, detector plus selective verifier, and detector plus always-on verifier. Report 2D center error, detection precision/recall and false alarms, tracking continuity through occlusion, 3D position error when later implemented, and end-to-end latency (median, p95, p99) on a named device. Break down capture, preprocessing, detector, verifier, triangulation, and filter time.
@@ -79,6 +77,6 @@ The requested submission is a short **PDF report** plus a **Python proof of conc
 3. Implement a basic 2D detector + Kalman filter and measure it on held-out sequences.
 4. Test selective DINOv2 verification, tune agreement thresholds, and keep it only if the measured operating point improves the result.
 5. Add calibrated stereo, triangulation, and 3D filtering when cameras/calibration or suitable multiview data are available.
-6. Write the final PDF with diagrams, measured tradeoffs, failure cases, limitations, and reproducible run instructions. Package code and artifacts for GitHub or ZIP delivery.
+6. Document diagrams, measured tradeoffs, failure cases, limitations, and reproducible run instructions.
 
 **Current status:** synthetic CPU prototype, DINOv2 verification, Kalman/scale and flow-matching experiments are complete. Real-data YOLO training, TAPNext and full stereo tracking remain research options. See reports/RESEARCH.md for measured evidence and limits.

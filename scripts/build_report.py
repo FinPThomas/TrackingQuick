@@ -110,7 +110,7 @@ def main():
         markdown.append(f"![{name}](results/{name})\n")
 
     story.append(Paragraph("TrackingQuick", style["Title"]))
-    paragraph("SPAICE single-drone tracking | Quick research prototype v0.1 | "+args.date)
+    paragraph("Single-drone tracking | Quick research prototype v0.1 | "+args.date)
     paragraph("DINOv2 appearance verification, Kalman filtering, a conditional distance estimate, and a small flow-matching experiment. All measured vision results below use original synthetic imagery on the laptop CPU. This report does not establish accuracy or real-time performance on flying drones in real footage.")
     story.append(pipeline())
     heading("1. System design and implementation")
@@ -162,7 +162,7 @@ def main():
     paragraph("'ScaleGPT' did not resolve to a reliable primary source. ScaleDepth is a related identifiable scale/relative-depth method; it was not run. A learned scale model needs a real drone-domain test. [4]", True)
 
     story.append(PageBreak())
-    heading("5. Failure modes, delivery and next experiment")
+    heading("5. Failure modes and next experiment")
     paragraph("Small augmentation: reference brightness, size and modest orientation variation, plus three-pixel blur on a subset. Test clips add a lighting change, five-pixel blur and a fifteen-frame full occlusion. Failure modes remain dark-background proposals, appearance shift, motion blur, drift onto an occluder, delayed verification and size-prior bias. Short exposure helps blur but increases low-light noise.")
     paragraph("For a fuller system, radar can add range/range-rate, thermal can improve night visibility, and gimbal IMU/encoders can support motion compensation. Fuse timestamped observations in a common frame with sensor-specific observation functions and covariances; avoid counting correlated camera-derived estimates twice.")
     paragraph("The public multiview drone dataset is a candidate for the next test. Its dataset-1 labels are drone centers, not boxes, and the repository uses CC BY-NC-SA 4.0. No external footage or derived images were downloaded in this run. Confirm terms and annotation suitability, then split complete flights before fitting any model or threshold. [8]")
@@ -187,7 +187,7 @@ def main():
 
     report = ROOT/"reports/TrackingQuick_research.pdf"
     doc = SimpleDocTemplate(str(report), pagesize=A4, rightMargin=42, leftMargin=42, topMargin=38, bottomMargin=42,
-                            title="TrackingQuick - SPAICE drone tracking research", author="TrackingQuick")
+                            title="TrackingQuick - drone tracking research", author="TrackingQuick")
     doc.build(story, onFirstPage=footer, onLaterPages=footer)
     (ROOT/"reports/RESEARCH.md").write_text("# TrackingQuick research report\n\n"+"\n".join(markdown), encoding="utf-8")
     if args.render:

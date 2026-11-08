@@ -1,6 +1,6 @@
 # TrackingQuick research report
 
-SPAICE single-drone tracking | Quick research prototype v0.1 | 28 October 2026
+Single-drone tracking | Quick research prototype v0.1 | 28 October 2026
 
 DINOv2 appearance verification, Kalman filtering, a conditional distance estimate, and a small flow-matching experiment. All measured vision results below use original synthetic imagery on the laptop CPU. This report does not establish accuracy or real-time performance on flying drones in real footage.
 
@@ -88,7 +88,7 @@ The mean improves on this constructed motion task, but intervals under-cover. Ke
 
 'ScaleGPT' did not resolve to a reliable primary source. ScaleDepth is a related identifiable scale/relative-depth method; it was not run. A learned scale model needs a real drone-domain test. [4]
 
-## 5. Failure modes, delivery and next experiment
+## 5. Failure modes and next experiment
 
 Small augmentation: reference brightness, size and modest orientation variation, plus three-pixel blur on a subset. Test clips add a lighting change, five-pixel blur and a fifteen-frame full occlusion. Failure modes remain dark-background proposals, appearance shift, motion blur, drift onto an occluder, delayed verification and size-prior bias. Short exposure helps blur but increases low-light noise.
 
