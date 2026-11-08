@@ -121,7 +121,7 @@ $\mathbf{p}_i$ with photometric error $e_i$ below threshold:
 ```math
 \mathcal{I}=\{\, i : \lVert \mathbf{p}_i-\mathbf{b}_i \rVert_2 < 1\,\text{px},\ e_i < 25 \,\},
 \qquad
-\Delta\mathbf{c}=\operatorname{median}_{i\in\mathcal{I}}\,(\mathbf{q}_i-\mathbf{p}_i)
+\Delta\mathbf{c}=\mathrm{median}_{i\in\mathcal{I}}\,(\mathbf{q}_i-\mathbf{p}_i)
 ```
 
 The measurement noise passed to the Kalman filter is
@@ -139,7 +139,7 @@ state $L=\log W$:
 \qquad
 \log Z = q + L,
 \qquad
-\operatorname{Var}[\log Z] = \operatorname{Var}[q] + \operatorname{Var}[L] + 2\operatorname{Cov}[q,L]
+\mathrm{Var}[\log Z] = \mathrm{Var}[q] + \mathrm{Var}[L] + 2\mathrm{Cov}[q,L]
 ```
 
 Image measurements observe only $q$, so no number of frames reduces the variance
