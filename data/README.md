@@ -8,6 +8,6 @@ The v0.2 evaluation adds one bird-only clip with no target and one drone-plus-la
 
 The conditional flow-matching experiment has its own generated motion samples and separate evaluation seed. It never uses camera observations or test-trajectory labels for training.
 
-`trackingquick-video` accepts a local file and a user-selected first-frame target box. Its appearance references come from that first frame, with no ground-truth labels or real-drone accuracy claim. The integration smoke test used the existing synthetic encoded demo; no public drone video has been downloaded or evaluated yet.
+`trackingquick-video` accepts a local file and a user-selected first-frame target box. Its appearance references come from that first frame, with no ground-truth labels or real-drone accuracy claim. The integration smoke test used the existing synthetic encoded demo. Real-footage evaluation uses the two public datasets described in the [project README](../README.md#real-footage-evaluation), stored locally under `data/svanstrom` and `data/albl`.
 
 Candidate public-data sources and licensing are recorded in [the research notes](../docs/RESEARCH_NOTES.md). Large source/derived files remain ignored by Git. Before using real footage, record source, revision, license, annotation definition, camera calibration and flight-level split.
