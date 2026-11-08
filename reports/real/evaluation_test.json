@@ -1,0 +1,1454 @@
+[
+ {
+  "clip": "V_DRONE_091",
+  "distance": "CLOSE",
+  "class": "DRONE",
+  "policy": "flow",
+  "visible": 329,
+  "outputs": 329,
+  "within8": 195,
+  "within16": 253,
+  "inside": 320
+ },
+ {
+  "clip": "V_DRONE_091",
+  "distance": "CLOSE",
+  "class": "DRONE",
+  "policy": "first_frame",
+  "visible": 329,
+  "outputs": 313,
+  "within8": 180,
+  "within16": 237,
+  "inside": 304
+ },
+ {
+  "clip": "V_DRONE_091",
+  "distance": "CLOSE",
+  "class": "DRONE",
+  "policy": "target_first_frame",
+  "visible": 329,
+  "outputs": 313,
+  "within8": 181,
+  "within16": 237,
+  "inside": 305
+ },
+ {
+  "clip": "V_DRONE_091",
+  "distance": "CLOSE",
+  "class": "DRONE",
+  "policy": "target_real",
+  "visible": 329,
+  "outputs": 313,
+  "within8": 181,
+  "within16": 237,
+  "inside": 305
+ },
+ {
+  "clip": "V_DRONE_093",
+  "distance": "MEDIUM",
+  "class": "DRONE",
+  "policy": "flow",
+  "visible": 329,
+  "outputs": 329,
+  "within8": 270,
+  "within16": 304,
+  "inside": 310
+ },
+ {
+  "clip": "V_DRONE_093",
+  "distance": "MEDIUM",
+  "class": "DRONE",
+  "policy": "first_frame",
+  "visible": 329,
+  "outputs": 304,
+  "within8": 245,
+  "within16": 279,
+  "inside": 285
+ },
+ {
+  "clip": "V_DRONE_093",
+  "distance": "MEDIUM",
+  "class": "DRONE",
+  "policy": "target_first_frame",
+  "visible": 329,
+  "outputs": 304,
+  "within8": 246,
+  "within16": 279,
+  "inside": 285
+ },
+ {
+  "clip": "V_DRONE_093",
+  "distance": "MEDIUM",
+  "class": "DRONE",
+  "policy": "target_real",
+  "visible": 329,
+  "outputs": 297,
+  "within8": 265,
+  "within16": 276,
+  "inside": 278
+ },
+ {
+  "clip": "V_DRONE_095",
+  "distance": "MEDIUM",
+  "class": "DRONE",
+  "policy": "flow",
+  "visible": 312,
+  "outputs": 312,
+  "within8": 205,
+  "within16": 244,
+  "inside": 228
+ },
+ {
+  "clip": "V_DRONE_095",
+  "distance": "MEDIUM",
+  "class": "DRONE",
+  "policy": "first_frame",
+  "visible": 312,
+  "outputs": 292,
+  "within8": 236,
+  "within16": 253,
+  "inside": 253
+ },
+ {
+  "clip": "V_DRONE_095",
+  "distance": "MEDIUM",
+  "class": "DRONE",
+  "policy": "target_first_frame",
+  "visible": 312,
+  "outputs": 293,
+  "within8": 236,
+  "within16": 255,
+  "inside": 254
+ },
+ {
+  "clip": "V_DRONE_095",
+  "distance": "MEDIUM",
+  "class": "DRONE",
+  "policy": "target_real",
+  "visible": 312,
+  "outputs": 304,
+  "within8": 200,
+  "within16": 237,
+  "inside": 222
+ },
+ {
+  "clip": "V_DRONE_096",
+  "distance": "CLOSE",
+  "class": "DRONE",
+  "policy": "flow",
+  "visible": 325,
+  "outputs": 325,
+  "within8": 172,
+  "within16": 219,
+  "inside": 256
+ },
+ {
+  "clip": "V_DRONE_096",
+  "distance": "CLOSE",
+  "class": "DRONE",
+  "policy": "first_frame",
+  "visible": 325,
+  "outputs": 129,
+  "within8": 65,
+  "within16": 85,
+  "inside": 117
+ },
+ {
+  "clip": "V_DRONE_096",
+  "distance": "CLOSE",
+  "class": "DRONE",
+  "policy": "target_first_frame",
+  "visible": 325,
+  "outputs": 144,
+  "within8": 58,
+  "within16": 86,
+  "inside": 100
+ },
+ {
+  "clip": "V_DRONE_096",
+  "distance": "CLOSE",
+  "class": "DRONE",
+  "policy": "target_real",
+  "visible": 325,
+  "outputs": 172,
+  "within8": 87,
+  "within16": 106,
+  "inside": 119
+ },
+ {
+  "clip": "V_DRONE_097",
+  "distance": "MEDIUM",
+  "class": "DRONE",
+  "policy": "flow",
+  "visible": 303,
+  "outputs": 303,
+  "within8": 167,
+  "within16": 179,
+  "inside": 178
+ },
+ {
+  "clip": "V_DRONE_097",
+  "distance": "MEDIUM",
+  "class": "DRONE",
+  "policy": "first_frame",
+  "visible": 303,
+  "outputs": 186,
+  "within8": 124,
+  "within16": 132,
+  "inside": 132
+ },
+ {
+  "clip": "V_DRONE_097",
+  "distance": "MEDIUM",
+  "class": "DRONE",
+  "policy": "target_first_frame",
+  "visible": 303,
+  "outputs": 126,
+  "within8": 63,
+  "within16": 72,
+  "inside": 72
+ },
+ {
+  "clip": "V_DRONE_097",
+  "distance": "MEDIUM",
+  "class": "DRONE",
+  "policy": "target_real",
+  "visible": 303,
+  "outputs": 187,
+  "within8": 132,
+  "within16": 133,
+  "inside": 132
+ },
+ {
+  "clip": "V_DRONE_098",
+  "distance": "MEDIUM",
+  "class": "DRONE",
+  "policy": "flow",
+  "visible": 318,
+  "outputs": 318,
+  "within8": 131,
+  "within16": 148,
+  "inside": 155
+ },
+ {
+  "clip": "V_DRONE_098",
+  "distance": "MEDIUM",
+  "class": "DRONE",
+  "policy": "first_frame",
+  "visible": 318,
+  "outputs": 206,
+  "within8": 119,
+  "within16": 138,
+  "inside": 137
+ },
+ {
+  "clip": "V_DRONE_098",
+  "distance": "MEDIUM",
+  "class": "DRONE",
+  "policy": "target_first_frame",
+  "visible": 318,
+  "outputs": 141,
+  "within8": 86,
+  "within16": 96,
+  "inside": 95
+ },
+ {
+  "clip": "V_DRONE_098",
+  "distance": "MEDIUM",
+  "class": "DRONE",
+  "policy": "target_real",
+  "visible": 318,
+  "outputs": 294,
+  "within8": 155,
+  "within16": 187,
+  "inside": 196
+ },
+ {
+  "clip": "V_DRONE_099",
+  "distance": "MEDIUM",
+  "class": "DRONE",
+  "policy": "flow",
+  "visible": 309,
+  "outputs": 309,
+  "within8": 188,
+  "within16": 241,
+  "inside": 248
+ },
+ {
+  "clip": "V_DRONE_099",
+  "distance": "MEDIUM",
+  "class": "DRONE",
+  "policy": "first_frame",
+  "visible": 309,
+  "outputs": 293,
+  "within8": 174,
+  "within16": 225,
+  "inside": 232
+ },
+ {
+  "clip": "V_DRONE_099",
+  "distance": "MEDIUM",
+  "class": "DRONE",
+  "policy": "target_first_frame",
+  "visible": 309,
+  "outputs": 284,
+  "within8": 172,
+  "within16": 216,
+  "inside": 223
+ },
+ {
+  "clip": "V_DRONE_099",
+  "distance": "MEDIUM",
+  "class": "DRONE",
+  "policy": "target_real",
+  "visible": 309,
+  "outputs": 289,
+  "within8": 145,
+  "within16": 184,
+  "inside": 191
+ },
+ {
+  "clip": "V_DRONE_100",
+  "distance": "MEDIUM",
+  "class": "DRONE",
+  "policy": "flow",
+  "visible": 328,
+  "outputs": 328,
+  "within8": 163,
+  "within16": 194,
+  "inside": 193
+ },
+ {
+  "clip": "V_DRONE_100",
+  "distance": "MEDIUM",
+  "class": "DRONE",
+  "policy": "first_frame",
+  "visible": 328,
+  "outputs": 303,
+  "within8": 140,
+  "within16": 169,
+  "inside": 168
+ },
+ {
+  "clip": "V_DRONE_100",
+  "distance": "MEDIUM",
+  "class": "DRONE",
+  "policy": "target_first_frame",
+  "visible": 328,
+  "outputs": 300,
+  "within8": 138,
+  "within16": 164,
+  "inside": 163
+ },
+ {
+  "clip": "V_DRONE_100",
+  "distance": "MEDIUM",
+  "class": "DRONE",
+  "policy": "target_real",
+  "visible": 328,
+  "outputs": 298,
+  "within8": 137,
+  "within16": 162,
+  "inside": 161
+ },
+ {
+  "clip": "V_DRONE_101",
+  "distance": "CLOSE",
+  "class": "DRONE",
+  "policy": "flow",
+  "visible": 307,
+  "outputs": 307,
+  "within8": 145,
+  "within16": 185,
+  "inside": 223
+ },
+ {
+  "clip": "V_DRONE_101",
+  "distance": "CLOSE",
+  "class": "DRONE",
+  "policy": "first_frame",
+  "visible": 307,
+  "outputs": 273,
+  "within8": 118,
+  "within16": 152,
+  "inside": 191
+ },
+ {
+  "clip": "V_DRONE_101",
+  "distance": "CLOSE",
+  "class": "DRONE",
+  "policy": "target_first_frame",
+  "visible": 307,
+  "outputs": 260,
+  "within8": 103,
+  "within16": 136,
+  "inside": 159
+ },
+ {
+  "clip": "V_DRONE_101",
+  "distance": "CLOSE",
+  "class": "DRONE",
+  "policy": "target_real",
+  "visible": 307,
+  "outputs": 275,
+  "within8": 118,
+  "within16": 149,
+  "inside": 188
+ },
+ {
+  "clip": "V_DRONE_102",
+  "distance": "MEDIUM",
+  "class": "DRONE",
+  "policy": "flow",
+  "visible": 305,
+  "outputs": 305,
+  "within8": 181,
+  "within16": 235,
+  "inside": 239
+ },
+ {
+  "clip": "V_DRONE_102",
+  "distance": "MEDIUM",
+  "class": "DRONE",
+  "policy": "first_frame",
+  "visible": 305,
+  "outputs": 289,
+  "within8": 211,
+  "within16": 252,
+  "inside": 256
+ },
+ {
+  "clip": "V_DRONE_102",
+  "distance": "MEDIUM",
+  "class": "DRONE",
+  "policy": "target_first_frame",
+  "visible": 305,
+  "outputs": 185,
+  "within8": 148,
+  "within16": 164,
+  "inside": 168
+ },
+ {
+  "clip": "V_DRONE_102",
+  "distance": "MEDIUM",
+  "class": "DRONE",
+  "policy": "target_real",
+  "visible": 305,
+  "outputs": 256,
+  "within8": 172,
+  "within16": 216,
+  "inside": 223
+ },
+ {
+  "clip": "V_DRONE_103",
+  "distance": "MEDIUM",
+  "class": "DRONE",
+  "policy": "flow",
+  "visible": 321,
+  "outputs": 321,
+  "within8": 28,
+  "within16": 42,
+  "inside": 40
+ },
+ {
+  "clip": "V_DRONE_103",
+  "distance": "MEDIUM",
+  "class": "DRONE",
+  "policy": "first_frame",
+  "visible": 321,
+  "outputs": 285,
+  "within8": 247,
+  "within16": 261,
+  "inside": 259
+ },
+ {
+  "clip": "V_DRONE_103",
+  "distance": "MEDIUM",
+  "class": "DRONE",
+  "policy": "target_first_frame",
+  "visible": 321,
+  "outputs": 243,
+  "within8": 209,
+  "within16": 219,
+  "inside": 216
+ },
+ {
+  "clip": "V_DRONE_103",
+  "distance": "MEDIUM",
+  "class": "DRONE",
+  "policy": "target_real",
+  "visible": 321,
+  "outputs": 184,
+  "within8": 184,
+  "within16": 184,
+  "inside": 184
+ },
+ {
+  "clip": "V_DRONE_104",
+  "distance": "MEDIUM",
+  "class": "DRONE",
+  "policy": "flow",
+  "visible": 300,
+  "outputs": 300,
+  "within8": 152,
+  "within16": 162,
+  "inside": 162
+ },
+ {
+  "clip": "V_DRONE_104",
+  "distance": "MEDIUM",
+  "class": "DRONE",
+  "policy": "first_frame",
+  "visible": 300,
+  "outputs": 284,
+  "within8": 255,
+  "within16": 265,
+  "inside": 265
+ },
+ {
+  "clip": "V_DRONE_104",
+  "distance": "MEDIUM",
+  "class": "DRONE",
+  "policy": "target_first_frame",
+  "visible": 300,
+  "outputs": 292,
+  "within8": 261,
+  "within16": 273,
+  "inside": 273
+ },
+ {
+  "clip": "V_DRONE_104",
+  "distance": "MEDIUM",
+  "class": "DRONE",
+  "policy": "target_real",
+  "visible": 300,
+  "outputs": 272,
+  "within8": 269,
+  "within16": 272,
+  "inside": 272
+ },
+ {
+  "clip": "V_DRONE_105",
+  "distance": "DISTANT",
+  "class": "DRONE",
+  "policy": "flow",
+  "visible": 304,
+  "outputs": 304,
+  "within8": 53,
+  "within16": 76,
+  "inside": 66
+ },
+ {
+  "clip": "V_DRONE_105",
+  "distance": "DISTANT",
+  "class": "DRONE",
+  "policy": "first_frame",
+  "visible": 304,
+  "outputs": 57,
+  "within8": 35,
+  "within16": 55,
+  "inside": 42
+ },
+ {
+  "clip": "V_DRONE_105",
+  "distance": "DISTANT",
+  "class": "DRONE",
+  "policy": "target_first_frame",
+  "visible": 304,
+  "outputs": 80,
+  "within8": 55,
+  "within16": 55,
+  "inside": 55
+ },
+ {
+  "clip": "V_DRONE_105",
+  "distance": "DISTANT",
+  "class": "DRONE",
+  "policy": "target_real",
+  "visible": 304,
+  "outputs": 0,
+  "within8": 0,
+  "within16": 0,
+  "inside": 0
+ },
+ {
+  "clip": "V_DRONE_106",
+  "distance": "MEDIUM",
+  "class": "DRONE",
+  "policy": "flow",
+  "visible": 304,
+  "outputs": 304,
+  "within8": 216,
+  "within16": 251,
+  "inside": 264
+ },
+ {
+  "clip": "V_DRONE_106",
+  "distance": "MEDIUM",
+  "class": "DRONE",
+  "policy": "first_frame",
+  "visible": 304,
+  "outputs": 234,
+  "within8": 173,
+  "within16": 199,
+  "inside": 205
+ },
+ {
+  "clip": "V_DRONE_106",
+  "distance": "MEDIUM",
+  "class": "DRONE",
+  "policy": "target_first_frame",
+  "visible": 304,
+  "outputs": 259,
+  "within8": 170,
+  "within16": 223,
+  "inside": 218
+ },
+ {
+  "clip": "V_DRONE_106",
+  "distance": "MEDIUM",
+  "class": "DRONE",
+  "policy": "target_real",
+  "visible": 304,
+  "outputs": 296,
+  "within8": 205,
+  "within16": 243,
+  "inside": 256
+ },
+ {
+  "clip": "V_DRONE_107",
+  "distance": "MEDIUM",
+  "class": "DRONE",
+  "policy": "flow",
+  "visible": 300,
+  "outputs": 300,
+  "within8": 207,
+  "within16": 243,
+  "inside": 245
+ },
+ {
+  "clip": "V_DRONE_107",
+  "distance": "MEDIUM",
+  "class": "DRONE",
+  "policy": "first_frame",
+  "visible": 300,
+  "outputs": 155,
+  "within8": 75,
+  "within16": 92,
+  "inside": 97
+ },
+ {
+  "clip": "V_DRONE_107",
+  "distance": "MEDIUM",
+  "class": "DRONE",
+  "policy": "target_first_frame",
+  "visible": 300,
+  "outputs": 115,
+  "within8": 52,
+  "within16": 70,
+  "inside": 73
+ },
+ {
+  "clip": "V_DRONE_107",
+  "distance": "MEDIUM",
+  "class": "DRONE",
+  "policy": "target_real",
+  "visible": 300,
+  "outputs": 284,
+  "within8": 190,
+  "within16": 227,
+  "inside": 227
+ },
+ {
+  "clip": "V_DRONE_108",
+  "distance": "MEDIUM",
+  "class": "DRONE",
+  "policy": "flow",
+  "visible": 304,
+  "outputs": 304,
+  "within8": 120,
+  "within16": 136,
+  "inside": 132
+ },
+ {
+  "clip": "V_DRONE_108",
+  "distance": "MEDIUM",
+  "class": "DRONE",
+  "policy": "first_frame",
+  "visible": 304,
+  "outputs": 289,
+  "within8": 113,
+  "within16": 129,
+  "inside": 125
+ },
+ {
+  "clip": "V_DRONE_108",
+  "distance": "MEDIUM",
+  "class": "DRONE",
+  "policy": "target_first_frame",
+  "visible": 304,
+  "outputs": 292,
+  "within8": 187,
+  "within16": 228,
+  "inside": 225
+ },
+ {
+  "clip": "V_DRONE_108",
+  "distance": "MEDIUM",
+  "class": "DRONE",
+  "policy": "target_real",
+  "visible": 304,
+  "outputs": 256,
+  "within8": 76,
+  "within16": 76,
+  "inside": 76
+ },
+ {
+  "clip": "V_DRONE_109",
+  "distance": "MEDIUM",
+  "class": "DRONE",
+  "policy": "flow",
+  "visible": 326,
+  "outputs": 326,
+  "within8": 145,
+  "within16": 172,
+  "inside": 191
+ },
+ {
+  "clip": "V_DRONE_109",
+  "distance": "MEDIUM",
+  "class": "DRONE",
+  "policy": "first_frame",
+  "visible": 326,
+  "outputs": 303,
+  "within8": 221,
+  "within16": 255,
+  "inside": 274
+ },
+ {
+  "clip": "V_DRONE_109",
+  "distance": "MEDIUM",
+  "class": "DRONE",
+  "policy": "target_first_frame",
+  "visible": 326,
+  "outputs": 307,
+  "within8": 192,
+  "within16": 237,
+  "inside": 257
+ },
+ {
+  "clip": "V_DRONE_109",
+  "distance": "MEDIUM",
+  "class": "DRONE",
+  "policy": "target_real",
+  "visible": 326,
+  "outputs": 286,
+  "within8": 196,
+  "within16": 231,
+  "inside": 248
+ },
+ {
+  "clip": "V_DRONE_110",
+  "distance": "MEDIUM",
+  "class": "DRONE",
+  "policy": "flow",
+  "visible": 325,
+  "outputs": 325,
+  "within8": 244,
+  "within16": 268,
+  "inside": 280
+ },
+ {
+  "clip": "V_DRONE_110",
+  "distance": "MEDIUM",
+  "class": "DRONE",
+  "policy": "first_frame",
+  "visible": 325,
+  "outputs": 313,
+  "within8": 232,
+  "within16": 256,
+  "inside": 268
+ },
+ {
+  "clip": "V_DRONE_110",
+  "distance": "MEDIUM",
+  "class": "DRONE",
+  "policy": "target_first_frame",
+  "visible": 325,
+  "outputs": 313,
+  "within8": 232,
+  "within16": 256,
+  "inside": 268
+ },
+ {
+  "clip": "V_DRONE_110",
+  "distance": "MEDIUM",
+  "class": "DRONE",
+  "policy": "target_real",
+  "visible": 325,
+  "outputs": 219,
+  "within8": 135,
+  "within16": 147,
+  "inside": 150
+ },
+ {
+  "clip": "V_DRONE_111",
+  "distance": "DISTANT",
+  "class": "DRONE",
+  "policy": "flow",
+  "visible": 322,
+  "outputs": 298,
+  "within8": 241,
+  "within16": 254,
+  "inside": 247
+ },
+ {
+  "clip": "V_DRONE_111",
+  "distance": "DISTANT",
+  "class": "DRONE",
+  "policy": "first_frame",
+  "visible": 322,
+  "outputs": 20,
+  "within8": 20,
+  "within16": 20,
+  "inside": 20
+ },
+ {
+  "clip": "V_DRONE_111",
+  "distance": "DISTANT",
+  "class": "DRONE",
+  "policy": "target_first_frame",
+  "visible": 322,
+  "outputs": 20,
+  "within8": 20,
+  "within16": 20,
+  "inside": 20
+ },
+ {
+  "clip": "V_DRONE_111",
+  "distance": "DISTANT",
+  "class": "DRONE",
+  "policy": "target_real",
+  "visible": 322,
+  "outputs": 52,
+  "within8": 24,
+  "within16": 31,
+  "inside": 27
+ },
+ {
+  "clip": "V_DRONE_112",
+  "distance": "DISTANT",
+  "class": "DRONE",
+  "policy": "flow",
+  "visible": 300,
+  "outputs": 236,
+  "within8": 31,
+  "within16": 31,
+  "inside": 31
+ },
+ {
+  "clip": "V_DRONE_112",
+  "distance": "DISTANT",
+  "class": "DRONE",
+  "policy": "first_frame",
+  "visible": 300,
+  "outputs": 59,
+  "within8": 27,
+  "within16": 27,
+  "inside": 27
+ },
+ {
+  "clip": "V_DRONE_112",
+  "distance": "DISTANT",
+  "class": "DRONE",
+  "policy": "target_first_frame",
+  "visible": 300,
+  "outputs": 124,
+  "within8": 27,
+  "within16": 27,
+  "inside": 27
+ },
+ {
+  "clip": "V_DRONE_112",
+  "distance": "DISTANT",
+  "class": "DRONE",
+  "policy": "target_real",
+  "visible": 300,
+  "outputs": 40,
+  "within8": 0,
+  "within16": 0,
+  "inside": 0
+ },
+ {
+  "clip": "V_DRONE_113",
+  "distance": "DISTANT",
+  "class": "DRONE",
+  "policy": "flow",
+  "visible": 322,
+  "outputs": 251,
+  "within8": 15,
+  "within16": 31,
+  "inside": 31
+ },
+ {
+  "clip": "V_DRONE_113",
+  "distance": "DISTANT",
+  "class": "DRONE",
+  "policy": "first_frame",
+  "visible": 322,
+  "outputs": 27,
+  "within8": 11,
+  "within16": 27,
+  "inside": 27
+ },
+ {
+  "clip": "V_DRONE_113",
+  "distance": "DISTANT",
+  "class": "DRONE",
+  "policy": "target_first_frame",
+  "visible": 322,
+  "outputs": 60,
+  "within8": 11,
+  "within16": 16,
+  "inside": 16
+ },
+ {
+  "clip": "V_DRONE_113",
+  "distance": "DISTANT",
+  "class": "DRONE",
+  "policy": "target_real",
+  "visible": 322,
+  "outputs": 0,
+  "within8": 0,
+  "within16": 0,
+  "inside": 0
+ },
+ {
+  "clip": "V_AIRPLANE_045",
+  "distance": "MEDIUM",
+  "class": "AIRPLANE",
+  "policy": "flow",
+  "frames": 316,
+  "false_outputs": 314
+ },
+ {
+  "clip": "V_AIRPLANE_045",
+  "distance": "MEDIUM",
+  "class": "AIRPLANE",
+  "policy": "target_real",
+  "frames": 316,
+  "false_outputs": 20
+ },
+ {
+  "clip": "V_AIRPLANE_048",
+  "distance": "CLOSE",
+  "class": "AIRPLANE",
+  "policy": "flow",
+  "frames": 303,
+  "false_outputs": 301
+ },
+ {
+  "clip": "V_AIRPLANE_048",
+  "distance": "CLOSE",
+  "class": "AIRPLANE",
+  "policy": "target_real",
+  "frames": 303,
+  "false_outputs": 0
+ },
+ {
+  "clip": "V_AIRPLANE_049",
+  "distance": "CLOSE",
+  "class": "AIRPLANE",
+  "policy": "flow",
+  "frames": 313,
+  "false_outputs": 311
+ },
+ {
+  "clip": "V_AIRPLANE_049",
+  "distance": "CLOSE",
+  "class": "AIRPLANE",
+  "policy": "target_real",
+  "frames": 313,
+  "false_outputs": 77
+ },
+ {
+  "clip": "V_AIRPLANE_050",
+  "distance": "CLOSE",
+  "class": "AIRPLANE",
+  "policy": "flow",
+  "frames": 313,
+  "false_outputs": 311
+ },
+ {
+  "clip": "V_AIRPLANE_050",
+  "distance": "CLOSE",
+  "class": "AIRPLANE",
+  "policy": "target_real",
+  "frames": 313,
+  "false_outputs": 21
+ },
+ {
+  "clip": "V_AIRPLANE_051",
+  "distance": "MEDIUM",
+  "class": "AIRPLANE",
+  "policy": "flow",
+  "frames": 324,
+  "false_outputs": 322
+ },
+ {
+  "clip": "V_AIRPLANE_051",
+  "distance": "MEDIUM",
+  "class": "AIRPLANE",
+  "policy": "target_real",
+  "frames": 324,
+  "false_outputs": 106
+ },
+ {
+  "clip": "V_AIRPLANE_052",
+  "distance": "MEDIUM",
+  "class": "AIRPLANE",
+  "policy": "flow",
+  "frames": 314,
+  "false_outputs": 312
+ },
+ {
+  "clip": "V_AIRPLANE_052",
+  "distance": "MEDIUM",
+  "class": "AIRPLANE",
+  "policy": "target_real",
+  "frames": 314,
+  "false_outputs": 217
+ },
+ {
+  "clip": "V_AIRPLANE_055",
+  "distance": "DISTANT",
+  "class": "AIRPLANE",
+  "policy": "flow",
+  "frames": 303,
+  "false_outputs": 62
+ },
+ {
+  "clip": "V_AIRPLANE_055",
+  "distance": "DISTANT",
+  "class": "AIRPLANE",
+  "policy": "target_real",
+  "frames": 303,
+  "false_outputs": 20
+ },
+ {
+  "clip": "V_AIRPLANE_056",
+  "distance": "DISTANT",
+  "class": "AIRPLANE",
+  "policy": "flow",
+  "frames": 324,
+  "false_outputs": 304
+ },
+ {
+  "clip": "V_AIRPLANE_056",
+  "distance": "DISTANT",
+  "class": "AIRPLANE",
+  "policy": "target_real",
+  "frames": 324,
+  "false_outputs": 20
+ },
+ {
+  "clip": "V_AIRPLANE_057",
+  "distance": "DISTANT",
+  "class": "AIRPLANE",
+  "policy": "flow",
+  "frames": 315,
+  "false_outputs": 225
+ },
+ {
+  "clip": "V_AIRPLANE_057",
+  "distance": "DISTANT",
+  "class": "AIRPLANE",
+  "policy": "target_real",
+  "frames": 315,
+  "false_outputs": 80
+ },
+ {
+  "clip": "V_AIRPLANE_058",
+  "distance": "DISTANT",
+  "class": "AIRPLANE",
+  "policy": "flow",
+  "frames": 319,
+  "false_outputs": 317
+ },
+ {
+  "clip": "V_AIRPLANE_058",
+  "distance": "DISTANT",
+  "class": "AIRPLANE",
+  "policy": "target_real",
+  "frames": 319,
+  "false_outputs": 194
+ },
+ {
+  "clip": "V_AIRPLANE_059",
+  "distance": "DISTANT",
+  "class": "AIRPLANE",
+  "policy": "flow",
+  "frames": 310,
+  "false_outputs": 308
+ },
+ {
+  "clip": "V_AIRPLANE_059",
+  "distance": "DISTANT",
+  "class": "AIRPLANE",
+  "policy": "target_real",
+  "frames": 310,
+  "false_outputs": 95
+ },
+ {
+  "clip": "V_BIRD_022",
+  "distance": "CLOSE",
+  "class": "BIRD",
+  "policy": "flow",
+  "frames": 323,
+  "false_outputs": 321
+ },
+ {
+  "clip": "V_BIRD_022",
+  "distance": "CLOSE",
+  "class": "BIRD",
+  "policy": "target_real",
+  "frames": 323,
+  "false_outputs": 160
+ },
+ {
+  "clip": "V_BIRD_043",
+  "distance": "MEDIUM",
+  "class": "BIRD",
+  "policy": "flow",
+  "frames": 310,
+  "false_outputs": 294
+ },
+ {
+  "clip": "V_BIRD_043",
+  "distance": "MEDIUM",
+  "class": "BIRD",
+  "policy": "target_real",
+  "frames": 310,
+  "false_outputs": 20
+ },
+ {
+  "clip": "V_BIRD_044",
+  "distance": "DISTANT",
+  "class": "BIRD",
+  "policy": "flow",
+  "frames": 321,
+  "false_outputs": 232
+ },
+ {
+  "clip": "V_BIRD_044",
+  "distance": "DISTANT",
+  "class": "BIRD",
+  "policy": "target_real",
+  "frames": 321,
+  "false_outputs": 20
+ },
+ {
+  "clip": "V_BIRD_045",
+  "distance": "MEDIUM",
+  "class": "BIRD",
+  "policy": "flow",
+  "frames": 308,
+  "false_outputs": 306
+ },
+ {
+  "clip": "V_BIRD_045",
+  "distance": "MEDIUM",
+  "class": "BIRD",
+  "policy": "target_real",
+  "frames": 308,
+  "false_outputs": 16
+ },
+ {
+  "clip": "V_BIRD_046",
+  "distance": "MEDIUM",
+  "class": "BIRD",
+  "policy": "flow",
+  "frames": 311,
+  "false_outputs": 309
+ },
+ {
+  "clip": "V_BIRD_046",
+  "distance": "MEDIUM",
+  "class": "BIRD",
+  "policy": "target_real",
+  "frames": 311,
+  "false_outputs": 0
+ },
+ {
+  "clip": "V_BIRD_047",
+  "distance": "MEDIUM",
+  "class": "BIRD",
+  "policy": "flow",
+  "frames": 322,
+  "false_outputs": 319
+ },
+ {
+  "clip": "V_BIRD_047",
+  "distance": "MEDIUM",
+  "class": "BIRD",
+  "policy": "target_real",
+  "frames": 322,
+  "false_outputs": 20
+ },
+ {
+  "clip": "V_BIRD_048",
+  "distance": "CLOSE",
+  "class": "BIRD",
+  "policy": "flow",
+  "frames": 312,
+  "false_outputs": 310
+ },
+ {
+  "clip": "V_BIRD_048",
+  "distance": "CLOSE",
+  "class": "BIRD",
+  "policy": "target_real",
+  "frames": 312,
+  "false_outputs": 94
+ },
+ {
+  "clip": "V_BIRD_049",
+  "distance": "DISTANT",
+  "class": "BIRD",
+  "policy": "flow",
+  "frames": 304,
+  "false_outputs": 157
+ },
+ {
+  "clip": "V_BIRD_049",
+  "distance": "DISTANT",
+  "class": "BIRD",
+  "policy": "target_real",
+  "frames": 304,
+  "false_outputs": 0
+ },
+ {
+  "clip": "V_BIRD_050",
+  "distance": "DISTANT",
+  "class": "BIRD",
+  "policy": "flow",
+  "frames": 303,
+  "false_outputs": 288
+ },
+ {
+  "clip": "V_BIRD_050",
+  "distance": "DISTANT",
+  "class": "BIRD",
+  "policy": "target_real",
+  "frames": 303,
+  "false_outputs": 20
+ },
+ {
+  "clip": "V_BIRD_051",
+  "distance": "DISTANT",
+  "class": "BIRD",
+  "policy": "flow",
+  "frames": 327,
+  "false_outputs": 325
+ },
+ {
+  "clip": "V_BIRD_051",
+  "distance": "DISTANT",
+  "class": "BIRD",
+  "policy": "target_real",
+  "frames": 327,
+  "false_outputs": 87
+ },
+ {
+  "clip": "V_HELICOPTER_048",
+  "distance": "MEDIUM",
+  "class": "HELICOPTER",
+  "policy": "flow",
+  "frames": 310,
+  "false_outputs": 308
+ },
+ {
+  "clip": "V_HELICOPTER_048",
+  "distance": "MEDIUM",
+  "class": "HELICOPTER",
+  "policy": "target_real",
+  "frames": 310,
+  "false_outputs": 0
+ },
+ {
+  "clip": "V_HELICOPTER_049",
+  "distance": "CLOSE",
+  "class": "HELICOPTER",
+  "policy": "flow",
+  "frames": 318,
+  "false_outputs": 309
+ },
+ {
+  "clip": "V_HELICOPTER_049",
+  "distance": "CLOSE",
+  "class": "HELICOPTER",
+  "policy": "target_real",
+  "frames": 318,
+  "false_outputs": 0
+ },
+ {
+  "clip": "V_HELICOPTER_050",
+  "distance": "CLOSE",
+  "class": "HELICOPTER",
+  "policy": "flow",
+  "frames": 318,
+  "false_outputs": 316
+ },
+ {
+  "clip": "V_HELICOPTER_050",
+  "distance": "CLOSE",
+  "class": "HELICOPTER",
+  "policy": "target_real",
+  "frames": 318,
+  "false_outputs": 0
+ },
+ {
+  "clip": "V_HELICOPTER_051",
+  "distance": "CLOSE",
+  "class": "HELICOPTER",
+  "policy": "flow",
+  "frames": 310,
+  "false_outputs": 308
+ },
+ {
+  "clip": "V_HELICOPTER_051",
+  "distance": "CLOSE",
+  "class": "HELICOPTER",
+  "policy": "target_real",
+  "frames": 310,
+  "false_outputs": 0
+ },
+ {
+  "clip": "V_HELICOPTER_052",
+  "distance": "MEDIUM",
+  "class": "HELICOPTER",
+  "policy": "flow",
+  "frames": 301,
+  "false_outputs": 299
+ },
+ {
+  "clip": "V_HELICOPTER_052",
+  "distance": "MEDIUM",
+  "class": "HELICOPTER",
+  "policy": "target_real",
+  "frames": 301,
+  "false_outputs": 0
+ },
+ {
+  "clip": "V_HELICOPTER_053",
+  "distance": "CLOSE",
+  "class": "HELICOPTER",
+  "policy": "flow",
+  "frames": 322,
+  "false_outputs": 320
+ },
+ {
+  "clip": "V_HELICOPTER_053",
+  "distance": "CLOSE",
+  "class": "HELICOPTER",
+  "policy": "target_real",
+  "frames": 322,
+  "false_outputs": 0
+ },
+ {
+  "clip": "V_HELICOPTER_054",
+  "distance": "MEDIUM",
+  "class": "HELICOPTER",
+  "policy": "flow",
+  "frames": 314,
+  "false_outputs": 312
+ },
+ {
+  "clip": "V_HELICOPTER_054",
+  "distance": "MEDIUM",
+  "class": "HELICOPTER",
+  "policy": "target_real",
+  "frames": 314,
+  "false_outputs": 0
+ },
+ {
+  "clip": "V_HELICOPTER_056",
+  "distance": "CLOSE",
+  "class": "HELICOPTER",
+  "policy": "flow",
+  "frames": 312,
+  "false_outputs": 310
+ },
+ {
+  "clip": "V_HELICOPTER_056",
+  "distance": "CLOSE",
+  "class": "HELICOPTER",
+  "policy": "target_real",
+  "frames": 312,
+  "false_outputs": 0
+ },
+ {
+  "clip": "V_HELICOPTER_058",
+  "distance": "DISTANT",
+  "class": "HELICOPTER",
+  "policy": "flow",
+  "frames": 312,
+  "false_outputs": 292
+ },
+ {
+  "clip": "V_HELICOPTER_058",
+  "distance": "DISTANT",
+  "class": "HELICOPTER",
+  "policy": "target_real",
+  "frames": 312,
+  "false_outputs": 20
+ },
+ {
+  "clip": "V_HELICOPTER_059",
+  "distance": "DISTANT",
+  "class": "HELICOPTER",
+  "policy": "flow",
+  "frames": 313,
+  "false_outputs": 311
+ },
+ {
+  "clip": "V_HELICOPTER_059",
+  "distance": "DISTANT",
+  "class": "HELICOPTER",
+  "policy": "target_real",
+  "frames": 313,
+  "false_outputs": 0
+ },
+ {
+  "clip": "V_HELICOPTER_060",
+  "distance": "MEDIUM",
+  "class": "HELICOPTER",
+  "policy": "flow",
+  "frames": 326,
+  "false_outputs": 324
+ },
+ {
+  "clip": "V_HELICOPTER_060",
+  "distance": "MEDIUM",
+  "class": "HELICOPTER",
+  "policy": "target_real",
+  "frames": 326,
+  "false_outputs": 236
+ },
+ {
+  "clip": "V_HELICOPTER_061",
+  "distance": "MEDIUM",
+  "class": "HELICOPTER",
+  "policy": "flow",
+  "frames": 307,
+  "false_outputs": 305
+ },
+ {
+  "clip": "V_HELICOPTER_061",
+  "distance": "MEDIUM",
+  "class": "HELICOPTER",
+  "policy": "target_real",
+  "frames": 307,
+  "false_outputs": 30
+ }
+]

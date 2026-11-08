@@ -12,15 +12,22 @@ user-specified initial target box. A [synthetic benchmark](#synthetic-benchmark)
 provides controlled failure cases, and the [system outline](OUTLINE.md) describes
 the proposed extension to calibrated 3D tracking.
 
-![Placeholder for tracker output on a held-out real clip](docs/images/placeholder_svanstrom.png)
+![Tracker output on a held-out clip of a real drone](docs/images/real_tracking_demo.gif)
 
-*Tracker output on a held-out real clip.*
+*Trained-verifier output on held-out clip 103, chosen as the median-scoring clip.
+The white box is the dataset label and the green ring is the tracker's output.
+This clip scored 57.3% within 16 px in the recorded evaluation; the animation is a
+separate re-run.*
 
-| Test | Metric | Flow + Kalman | Target proposals + trained verifier |
-| --- | --- | ---: | ---: |
-| Held-out drone clips | Frames within 16 px | *pending* | *pending* |
-| External drone footage | Frames within 16 px | *pending* | *pending* |
-| Drone-free clips | False-alarm frames | *pending* | *pending* |
+| Test | Metric | Flow + Kalman | First-frame DINO | Target proposals + trained verifier |
+| --- | --- | ---: | ---: | ---: |
+| Held-out drone clips | Frames within 16 px | 58.7% | 53.2% | 50.0% |
+| External drone footage | Frames within 16 px | 74.2% | 78.2% | 48.7% |
+| Drone-free clips | False-alarm frames | 93.3% | n/a | 15.2% |
+
+No policy is best on every test. Trained verification removes most false alarms, but
+it also lowers accuracy, and substantially so on the external footage. The
+[results discussion](#what-the-results-show) gives the details.
 
 **Contents:** [Setup](#setup) · [Processing videos](#processing-videos) ·
 [Real-footage evaluation](#real-footage-evaluation) · [Architecture](#architecture) ·
@@ -98,8 +105,11 @@ the decision threshold are selected on validation clips only.
 
 | Verifier, held-out crops | Balanced accuracy | Recall | False-positive rate |
 | --- | ---: | ---: | ---: |
-| Mean prototypes | *pending* | *pending* | *pending* |
-| Linear probe | *pending* | *pending* | *pending* |
+| Mean prototypes | 77.1% | 83.3% | 29.1% |
+| Linear probe | 82.4% | 73.7% | 8.8% |
+
+The probe scored 92.4% balanced accuracy on validation clips, against 82.4% on test
+clips, so performance varies noticeably between groups of clips.
 
 ### Tracker policies
 
@@ -123,26 +133,53 @@ output is a false alarm.
 
 | Policy | Coverage | Within 8 px | Within 16 px | Inside label box |
 | --- | ---: | ---: | ---: | ---: |
-| Flow + Kalman | *pending* | *pending* | *pending* | *pending* |
-| First-frame DINO | *pending* | *pending* | *pending* | *pending* |
-| Target proposals + first-frame DINO | *pending* | *pending* | *pending* | *pending* |
-| Target proposals + trained verifier | *pending* | *pending* | *pending* | *pending* |
+| Flow + Kalman | 97.6% | 49.6% | 58.7% | 61.3% |
+| First-frame DINO | 70.0% | 45.8% | 53.2% | 55.9% |
+| Target proposals + first-frame DINO | 67.6% | 43.2% | 50.5% | 52.7% |
+| Target proposals + trained verifier | 69.4% | 43.5% | 50.0% | 52.4% |
 
 **Drone clips by distance**
 
-| Distance bin | Clips | Flow + Kalman, within 16 px | Trained verifier, within 16 px |
-| --- | ---: | ---: | ---: |
-| Close | *pending* | *pending* | *pending* |
-| Medium | *pending* | *pending* | *pending* |
-| Distant | *pending* | *pending* | *pending* |
+| Distance bin | Clips | Flow + Kalman | First-frame DINO | Trained verifier |
+| --- | ---: | ---: | ---: | ---: |
+| Close | 3 | 68.4% | 49.3% | 51.2% |
+| Medium | 14 | 64.3% | 66.3% | 63.3% |
+| Distant | 4 | 31.4% | 10.3% | 2.5% |
+
+Values are frames within 16 px. The close and distant bins contain few clips.
 
 **Drone-free clips**
 
 | Drone-free class | Clips | Flow + Kalman false alarms | Trained verifier false alarms |
 | --- | ---: | ---: | ---: |
-| Bird | *pending* | *pending* | *pending* |
-| Airplane | *pending* | *pending* | *pending* |
-| Helicopter | *pending* | *pending* | *pending* |
+| Bird | 10 | 91.1% | 13.9% |
+| Airplane | 11 | 89.4% | 24.6% |
+| Helicopter | 12 | 98.7% | 7.6% |
+
+First-frame DINO has no entry because a drone-free clip offers no target to reference.
+
+![Flow and Kalman report a distant bird as a target while the trained verifier gives no output](docs/images/real_bird_comparison.gif)
+
+*Bird clip 043, chosen as the median clip for the trained verifier. Without
+verification the bird is tracked as a target. In the recorded evaluation the trained
+verifier emitted 20 false-alarm frames out of 310; this separate re-run emitted none.*
+
+### What the results show
+
+- **Verification is a tradeoff.** Flow + Kalman has the highest held-out accuracy
+  because it almost always reports a position, but it raises a false alarm on 93.3%
+  of drone-free frames. The trained verifier reduces that to 15.2%, at a cost of
+  8.7 points of held-out accuracy.
+- **The trained verifier does not generalize to new footage.** With the same
+  proposals, it matches first-frame DINO on held-out clips (50.0% against 50.5%,
+  better on 8 clips and worse on 12). On external footage it is far lower (48.7%
+  against 71.2%, better on 2 windows and worse on 11), and it rejects drones that
+  are clearly visible.
+- **The proposal changes did not hold up.** They improved the development clips, but
+  with first-frame DINO they lowered held-out accuracy from 53.2% to 50.5% (better on
+  5 clips and worse on 10) and external accuracy from 78.2% to 71.2%. They remain
+  optional and are not used by `trackingquick-video`.
+- **Distant drones remain unsolved.** No policy exceeds 31.4% in the distant bin.
 
 ### External test
 
@@ -153,34 +190,44 @@ derived from local contrast around the labeled center.
 
 | Policy | Coverage | Within 8 px | Within 16 px | Within 32 px | p95 processing (ms) |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| Flow + Kalman | *pending* | *pending* | *pending* | *pending* | *pending* |
-| First-frame DINO | *pending* | *pending* | *pending* | *pending* | *pending* |
-| Target proposals + first-frame DINO | *pending* | *pending* | *pending* | *pending* | *pending* |
-| Target proposals + trained verifier | *pending* | *pending* | *pending* | *pending* | *pending* |
+| Flow + Kalman | 100.0% | 67.6% | 74.2% | 80.4% | 185 |
+| First-frame DINO | 92.7% | 71.2% | 78.2% | 84.7% | 183 |
+| Target proposals + first-frame DINO | 83.7% | 66.2% | 71.2% | 76.6% | 180 |
+| Target proposals + trained verifier | 56.5% | 44.4% | 48.7% | 52.4% | 176 |
 
-![Placeholder for tracker output on the external dataset](docs/images/placeholder_albl.png)
+Processing is the median across windows of each window's p95. At 1920x1080 it is well
+above the 33 ms frame period, so the tracker does not run in real time at this
+resolution on the evaluation CPU.
 
-*Tracker output on an external clip. Footage from
-[Albl et al.](https://github.com/CenekAlbl/drone-tracking-datasets), CC BY-NC-SA 4.0.
-This figure is distributed under the same license.*
+![First-frame DINO and the trained verifier tracking a hexacopter on external footage](docs/images/real_albl_comparison.gif)
+
+*Window chosen as the median for the trained verifier, cropped to follow the labeled
+position (white dot). Footage from [Albl et al.](https://github.com/CenekAlbl/drone-tracking-datasets),
+CC BY-NC-SA 4.0. This figure is distributed under the same license.*
 
 ### Known issues on real footage
 
-These failure modes were identified by inspecting tracks on the development clips,
-and the causes are inferred from those tracks.
+The first six issues were identified by inspecting tracks on the development clips,
+and their causes are inferred from those tracks. The last two come from the test
+results.
 
-| Issue | Cause | Status |
-| --- | --- | --- |
-| Tiny targets are never proposed | The drone covers only a few pixels and falls below the original minimum blob size. | Mitigated by minimum sizes that scale with the target. |
-| Hovering drones disappear | Background subtraction absorbs a stationary target, and the track retires without detections. | Partly mitigated by a contrast search near the track. Verification of very small crops remains weak. |
-| Tracks restart on ground clutter | After a loss the tracker restarted on the largest moving blob, often vegetation. | Mitigated by restarting near the last position and rejecting oversized blobs. |
-| Large drones fragment | Loose size limits split a close drone into propeller-sized blobs. | Mitigated by scaling mask closing with the target size. |
-| Point flow drifts between detections | Center error grows between accepted detections, and the cause has not been isolated. | Open. |
-| First-frame references are fragile | One crop cannot represent a drone across viewpoints, and the threshold is uncalibrated. | Mitigated by the trained verifier. |
+| Issue | Cause | Change tried | Result |
+| --- | --- | --- | --- |
+| Tiny targets are not proposed | The drone covers only a few pixels and falls below the original minimum blob size. | Minimum sizes that scale with the target. | Not solved. Distant-bin accuracy stays at or below 10.3% with DINO verification. |
+| Hovering drones disappear | Background subtraction absorbs a stationary target, and the track retires without detections. | Contrast search near the track. | Not solved. Verification of very small crops is also weak. |
+| Tracks restart on ground clutter | After a loss the tracker restarted on the largest moving blob, often vegetation. | Restart near the last position and reject oversized blobs. | Not measured in isolation. |
+| Large drones fragment | Loose size limits split a close drone into propeller-sized blobs. | Mask closing that scales with the target. | Not measured in isolation. |
+| Point flow drifts | Center error grows between accepted detections. The cause has not been isolated. | None. | Open. |
+| First-frame references are fragile | One crop cannot represent a drone across viewpoints, and the threshold is uncalibrated. | Verifier trained on real crops. | Mixed. Far fewer false alarms, but lower accuracy. |
+| The verifier rejects real drones on new footage | The likely cause is domain shift, since training used one dataset's cameras. This has not been isolated. | None. | Open. External coverage is 56.5%. |
+| Too slow at 1080p | Median p95 processing is 176–185 ms per frame across policies. | None. | Open. |
 
-![Placeholder for failure examples on real footage](docs/images/placeholder_failures.png)
+![Four failures: two distant drones and two clearly visible drones, all with no tracker output](docs/images/real_failures.png)
 
-*Representative failures on real footage.*
+*The lowest-scoring windows for the trained verifier. Top: distant drones covering
+a few pixels, from the Svanström test clips. Bottom: clearly visible drones rejected
+on external footage, from [Albl et al.](https://github.com/CenekAlbl/drone-tracking-datasets)
+(CC BY-NC-SA 4.0, under which the bottom panels are distributed).*
 
 ### Limitations
 
@@ -189,9 +236,15 @@ and the causes are inferred from those tracks.
 - Clips are split by block rather than by recorded flight, because flight identity
   is not available. Some session overlap between splits may remain.
 - Center error in pixels is not comparable across resolutions or target sizes.
+- The held-out test has 21 drone clips and the external test has 18 windows, so
+  small differences between policies should not be over-interpreted.
+- Timing was measured on one Windows CPU with paced replay, which affects when
+  verification results arrive and therefore the track decisions.
 - 49 Svanström clips are attributed by the dataset authors to a third-party video
-  channel. They are included in verifier training, and their frames are not
-  reproduced here.
+  channel. These are airplane and helicopter clips, used as training and test
+  negatives. Their frames are not reproduced here.
+- The flow-only baseline uses the original proposals, so its false-alarm comparison
+  with the trained verifier reflects both changes together.
 - The video runner `trackingquick-video` still uses first-frame references. The
   trained verifier is currently available through `trackingquick-real`.
 
@@ -203,6 +256,7 @@ uv run python scripts/prepare_albl.py
 uv run trackingquick-real train
 uv run trackingquick-real evaluate --split test
 uv run trackingquick-real albl --data data/albl
+uv run python scripts/build_real_media.py
 ```
 
 Footage is stored locally under `data/` and is excluded from version control.
@@ -235,13 +289,13 @@ the target. Solid paths run on the frame loop. Dotted paths are asynchronous.
 | --- | --- |
 | Separate proposal, motion and identity stages | Each stage fails differently and can be replaced independently. A trained detector can replace the proposal step without changing track logic. |
 | Foreground proposals instead of a trained detector | MOG2 suits a fixed camera, is cheap and needs no labeled training set. It finds moving objects only, so identity is left to the verifier. |
-| Proposal limits scaled to the target | A fixed minimum size drops distant drones, while loose limits split close ones into fragments. Scaling from the initial box handles both. |
+| Proposal limits scaled to the target | A fixed minimum size drops distant drones, while loose limits split close ones into fragments. Scaling from the initial box was intended to handle both, but did not improve held-out accuracy, so it remains optional. |
 
 #### Verification
 
 | Decision | Reasoning |
 | --- | --- |
-| Linear probe on frozen DINO features | A probe trains in seconds on a CPU from a few thousand crops. Unlike a single mean prototype, it can separate several kinds of negative. |
+| Linear probe on frozen DINO features | A probe trains in seconds on a CPU from a few thousand crops. Unlike a single mean prototype, it can separate several kinds of negative, and it scored higher on held-out crops. |
 | Real false proposals as training negatives | The verifier is shown the crops it will actually have to reject, such as moving vegetation. |
 | CPU inference with DINOv2-small INT8 through ONNX Runtime | The system should run without a GPU. A frozen backbone needs no deep training loop. |
 | 112 px DINO crops | Median crop time was 493.6 ms at 224 px and 108.0 ms at 112 px in the v0.1 runs. This was measured on a loaded laptop, so it is a practical comparison rather than a controlled one. |
@@ -284,13 +338,14 @@ the tracker from immediately reacquiring the object it has just rejected.
 **Motion proposals with a contrast fallback.** Background subtraction cannot see a
 hovering drone. When motion finds nothing near the track, a local contrast search
 around the predicted position supplies a measurement that does not depend on
-motion, so a stationary target can remain tracked.
+motion. It did not improve held-out accuracy overall and remains optional.
 
 **A trained probe behind the prototype interface.** The verifier scores a DINO
 feature $\mathbf{x}$ as $\mathbf{x}^\top\mathbf{w}_+ - \mathbf{x}^\top\mathbf{w}_-$.
 Setting $\mathbf{w}_+$ to the probe weights and $\mathbf{w}_-$ to zero expresses a
 trained linear classifier in the same form, so training on real footage required
-no change to the tracking loop.
+no change to the tracking loop. Compared with the flow-only baseline, false alarms
+on drone-free clips fell from 93.3% to 15.2%, but accuracy also fell.
 
 **Consensus point-flow measurement.** The flow step serves the same purpose as
 RANSAC, rejecting outlier motion, but without random sampling. For a pure
@@ -476,8 +531,10 @@ are candidates for later work and were not used for these results.
 | Area | Extension |
 | --- | --- |
 | Detection and validation | Evaluate YOLO and YOLO + DINO on drone, bird and empty clips, with training, validation and test splits separated by flight. |
+| Generalization | Train across more cameras and sites, and measure verifier recall per camera, since recall fell sharply on external footage. |
 | Appearance verification | Make the trained verifier available in `trackingquick-video`, and calibrate identity lifetime on held-out footage; assess continuity, wrong tracks and false alarms jointly. |
-| Latency | Introduce latest-frame capture and bounded queues; measure capture-to-output age on the intended hardware. |
+| Latency | Reduce processing resolution for 1080p input, introduce latest-frame capture and bounded queues, and measure capture-to-output age on the intended hardware. |
+| Small targets | Add a detector or multi-scale verification suited to drones that cover only a few pixels. |
 | Point tracking | Compare TAPNext with Lucas-Kanade flow using matched initialization, visibility handling, drift and latency measurements. |
 | 3D estimation | Extend the geometry routines to synchronized stereo, propagate correspondence uncertainty and use bearing-only updates at weak disparity. |
 | Motion modeling | Develop the conditional flow-matching experiment into a calibrated motion prior for occlusion handling. |

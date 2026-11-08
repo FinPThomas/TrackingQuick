@@ -1,0 +1,1226 @@
+[
+ {
+  "clip": "dataset1_cam0_1418",
+  "start": 1418,
+  "roi": [
+   1874,
+   305,
+   44,
+   27
+  ],
+  "policy": "flow",
+  "p95_ms": 275.96181000408257,
+  "visible": 162,
+  "outputs": 162,
+  "within8": 141,
+  "within16": 141,
+  "within32": 141
+ },
+ {
+  "clip": "dataset1_cam0_1418",
+  "start": 1418,
+  "roi": [
+   1874,
+   305,
+   44,
+   27
+  ],
+  "policy": "first_frame",
+  "p95_ms": 260.6144500168739,
+  "visible": 162,
+  "outputs": 137,
+  "within8": 137,
+  "within16": 137,
+  "within32": 137
+ },
+ {
+  "clip": "dataset1_cam0_1418",
+  "start": 1418,
+  "roi": [
+   1874,
+   305,
+   44,
+   27
+  ],
+  "policy": "target_first_frame",
+  "p95_ms": 236.2656399869593,
+  "visible": 162,
+  "outputs": 137,
+  "within8": 104,
+  "within16": 118,
+  "within32": 125
+ },
+ {
+  "clip": "dataset1_cam0_1418",
+  "start": 1418,
+  "roi": [
+   1874,
+   305,
+   44,
+   27
+  ],
+  "policy": "target_real",
+  "p95_ms": 236.46332499047276,
+  "visible": 162,
+  "outputs": 137,
+  "within8": 104,
+  "within16": 118,
+  "within32": 125
+ },
+ {
+  "clip": "dataset1_cam0_2783",
+  "start": 2783,
+  "roi": [
+   155,
+   343,
+   24,
+   28
+  ],
+  "policy": "flow",
+  "p95_ms": 254.16923497978132,
+  "visible": 300,
+  "outputs": 300,
+  "within8": 74,
+  "within16": 95,
+  "within32": 115
+ },
+ {
+  "clip": "dataset1_cam0_2783",
+  "start": 2783,
+  "roi": [
+   155,
+   343,
+   24,
+   28
+  ],
+  "policy": "first_frame",
+  "p95_ms": 282.8174600028433,
+  "visible": 300,
+  "outputs": 285,
+  "within8": 230,
+  "within16": 265,
+  "within32": 285
+ },
+ {
+  "clip": "dataset1_cam0_2783",
+  "start": 2783,
+  "roi": [
+   155,
+   343,
+   24,
+   28
+  ],
+  "policy": "target_first_frame",
+  "p95_ms": 254.1484399989713,
+  "visible": 300,
+  "outputs": 296,
+  "within8": 277,
+  "within16": 296,
+  "within32": 296
+ },
+ {
+  "clip": "dataset1_cam0_2783",
+  "start": 2783,
+  "roi": [
+   155,
+   343,
+   24,
+   28
+  ],
+  "policy": "target_real",
+  "p95_ms": 252.77473500173073,
+  "visible": 300,
+  "outputs": 236,
+  "within8": 222,
+  "within16": 236,
+  "within32": 236
+ },
+ {
+  "clip": "dataset1_cam0_4322",
+  "start": 4322,
+  "roi": [
+   1344,
+   12,
+   26,
+   27
+  ],
+  "policy": "flow",
+  "p95_ms": 250.72482998657506,
+  "visible": 155,
+  "outputs": 155,
+  "within8": 66,
+  "within16": 85,
+  "within32": 105
+ },
+ {
+  "clip": "dataset1_cam0_4322",
+  "start": 4322,
+  "roi": [
+   1344,
+   12,
+   26,
+   27
+  ],
+  "policy": "first_frame",
+  "p95_ms": 279.59170999238273,
+  "visible": 155,
+  "outputs": 124,
+  "within8": 69,
+  "within16": 94,
+  "within32": 114
+ },
+ {
+  "clip": "dataset1_cam0_4322",
+  "start": 4322,
+  "roi": [
+   1344,
+   12,
+   26,
+   27
+  ],
+  "policy": "target_first_frame",
+  "p95_ms": 217.68866005295428,
+  "visible": 155,
+  "outputs": 133,
+  "within8": 58,
+  "within16": 77,
+  "within32": 97
+ },
+ {
+  "clip": "dataset1_cam0_4322",
+  "start": 4322,
+  "roi": [
+   1344,
+   12,
+   26,
+   27
+  ],
+  "policy": "target_real",
+  "p95_ms": 215.27920999214984,
+  "visible": 155,
+  "outputs": 136,
+  "within8": 60,
+  "within16": 79,
+  "within32": 100
+ },
+ {
+  "clip": "dataset1_cam1_1235",
+  "start": 1235,
+  "roi": [
+   1418,
+   538,
+   44,
+   28
+  ],
+  "policy": "flow",
+  "p95_ms": 167.98581998737063,
+  "visible": 239,
+  "outputs": 239,
+  "within8": 149,
+  "within16": 163,
+  "within32": 179
+ },
+ {
+  "clip": "dataset1_cam1_1235",
+  "start": 1235,
+  "roi": [
+   1418,
+   538,
+   44,
+   28
+  ],
+  "policy": "first_frame",
+  "p95_ms": 171.64036004978698,
+  "visible": 239,
+  "outputs": 212,
+  "within8": 181,
+  "within16": 196,
+  "within32": 212
+ },
+ {
+  "clip": "dataset1_cam1_1235",
+  "start": 1235,
+  "roi": [
+   1418,
+   538,
+   44,
+   28
+  ],
+  "policy": "target_first_frame",
+  "p95_ms": 174.2700400238391,
+  "visible": 239,
+  "outputs": 215,
+  "within8": 139,
+  "within16": 167,
+  "within32": 199
+ },
+ {
+  "clip": "dataset1_cam1_1235",
+  "start": 1235,
+  "roi": [
+   1418,
+   538,
+   44,
+   28
+  ],
+  "policy": "target_real",
+  "p95_ms": 185.97702997503802,
+  "visible": 239,
+  "outputs": 161,
+  "within8": 118,
+  "within16": 145,
+  "within32": 161
+ },
+ {
+  "clip": "dataset1_cam1_2687",
+  "start": 2687,
+  "roi": [
+   791,
+   16,
+   38,
+   44
+  ],
+  "policy": "flow",
+  "p95_ms": 199.27513001603074,
+  "visible": 93,
+  "outputs": 93,
+  "within8": 26,
+  "within16": 48,
+  "within32": 63
+ },
+ {
+  "clip": "dataset1_cam1_2687",
+  "start": 2687,
+  "roi": [
+   791,
+   16,
+   38,
+   44
+  ],
+  "policy": "first_frame",
+  "p95_ms": 170.85325496154837,
+  "visible": 93,
+  "outputs": 72,
+  "within8": 24,
+  "within16": 42,
+  "within32": 57
+ },
+ {
+  "clip": "dataset1_cam1_2687",
+  "start": 2687,
+  "roi": [
+   791,
+   16,
+   38,
+   44
+  ],
+  "policy": "target_first_frame",
+  "p95_ms": 177.56733499118127,
+  "visible": 93,
+  "outputs": 87,
+  "within8": 29,
+  "within16": 55,
+  "within32": 77
+ },
+ {
+  "clip": "dataset1_cam1_2687",
+  "start": 2687,
+  "roi": [
+   791,
+   16,
+   38,
+   44
+  ],
+  "policy": "target_real",
+  "p95_ms": 157.72917004069313,
+  "visible": 93,
+  "outputs": 0,
+  "within8": 0,
+  "within16": 0,
+  "within32": 0
+ },
+ {
+  "clip": "dataset1_cam1_3705",
+  "start": 3705,
+  "roi": [
+   1176,
+   521,
+   34,
+   27
+  ],
+  "policy": "flow",
+  "p95_ms": 154.3583500082605,
+  "visible": 167,
+  "outputs": 167,
+  "within8": 61,
+  "within16": 72,
+  "within32": 78
+ },
+ {
+  "clip": "dataset1_cam1_3705",
+  "start": 3705,
+  "roi": [
+   1176,
+   521,
+   34,
+   27
+  ],
+  "policy": "first_frame",
+  "p95_ms": 150.10574002517387,
+  "visible": 167,
+  "outputs": 150,
+  "within8": 26,
+  "within16": 35,
+  "within32": 41
+ },
+ {
+  "clip": "dataset1_cam1_3705",
+  "start": 3705,
+  "roi": [
+   1176,
+   521,
+   34,
+   27
+  ],
+  "policy": "target_first_frame",
+  "p95_ms": 151.40922499704175,
+  "visible": 167,
+  "outputs": 27,
+  "within8": 0,
+  "within16": 1,
+  "within32": 2
+ },
+ {
+  "clip": "dataset1_cam1_3705",
+  "start": 3705,
+  "roi": [
+   1176,
+   521,
+   34,
+   27
+  ],
+  "policy": "target_real",
+  "p95_ms": 154.1359399619978,
+  "visible": 167,
+  "outputs": 39,
+  "within8": 0,
+  "within16": 1,
+  "within32": 2
+ },
+ {
+  "clip": "dataset1_cam3_1020",
+  "start": 1020,
+  "roi": [
+   1077,
+   596,
+   19,
+   13
+  ],
+  "policy": "flow",
+  "p95_ms": 179.10204496001825,
+  "visible": 243,
+  "outputs": 243,
+  "within8": 242,
+  "within16": 243,
+  "within32": 243
+ },
+ {
+  "clip": "dataset1_cam3_1020",
+  "start": 1020,
+  "roi": [
+   1077,
+   596,
+   19,
+   13
+  ],
+  "policy": "first_frame",
+  "p95_ms": 191.1652399285231,
+  "visible": 243,
+  "outputs": 239,
+  "within8": 238,
+  "within16": 239,
+  "within32": 239
+ },
+ {
+  "clip": "dataset1_cam3_1020",
+  "start": 1020,
+  "roi": [
+   1077,
+   596,
+   19,
+   13
+  ],
+  "policy": "target_first_frame",
+  "p95_ms": 190.17955489689484,
+  "visible": 243,
+  "outputs": 239,
+  "within8": 238,
+  "within16": 239,
+  "within32": 239
+ },
+ {
+  "clip": "dataset1_cam3_1020",
+  "start": 1020,
+  "roi": [
+   1077,
+   596,
+   19,
+   13
+  ],
+  "policy": "target_real",
+  "p95_ms": 175.8106650260743,
+  "visible": 243,
+  "outputs": 19,
+  "within8": 19,
+  "within16": 19,
+  "within32": 19
+ },
+ {
+  "clip": "dataset1_cam3_2040",
+  "start": 2040,
+  "roi": [
+   1707,
+   533,
+   28,
+   16
+  ],
+  "policy": "flow",
+  "p95_ms": 191.4637900190428,
+  "visible": 300,
+  "outputs": 300,
+  "within8": 300,
+  "within16": 300,
+  "within32": 300
+ },
+ {
+  "clip": "dataset1_cam3_2040",
+  "start": 2040,
+  "roi": [
+   1707,
+   533,
+   28,
+   16
+  ],
+  "policy": "first_frame",
+  "p95_ms": 188.2754849619232,
+  "visible": 300,
+  "outputs": 296,
+  "within8": 296,
+  "within16": 296,
+  "within32": 296
+ },
+ {
+  "clip": "dataset1_cam3_2040",
+  "start": 2040,
+  "roi": [
+   1707,
+   533,
+   28,
+   16
+  ],
+  "policy": "target_first_frame",
+  "p95_ms": 189.7638299735263,
+  "visible": 300,
+  "outputs": 296,
+  "within8": 296,
+  "within16": 296,
+  "within32": 296
+ },
+ {
+  "clip": "dataset1_cam3_2040",
+  "start": 2040,
+  "roi": [
+   1707,
+   533,
+   28,
+   16
+  ],
+  "policy": "target_real",
+  "p95_ms": 175.7770850032103,
+  "visible": 300,
+  "outputs": 35,
+  "within8": 35,
+  "within16": 35,
+  "within32": 35
+ },
+ {
+  "clip": "dataset1_cam3_3060",
+  "start": 3060,
+  "roi": [
+   1029,
+   556,
+   19,
+   15
+  ],
+  "policy": "flow",
+  "p95_ms": 204.13014495861717,
+  "visible": 300,
+  "outputs": 300,
+  "within8": 248,
+  "within16": 281,
+  "within32": 300
+ },
+ {
+  "clip": "dataset1_cam3_3060",
+  "start": 3060,
+  "roi": [
+   1029,
+   556,
+   19,
+   15
+  ],
+  "policy": "first_frame",
+  "p95_ms": 196.1762399179862,
+  "visible": 300,
+  "outputs": 292,
+  "within8": 240,
+  "within16": 273,
+  "within32": 292
+ },
+ {
+  "clip": "dataset1_cam3_3060",
+  "start": 3060,
+  "roi": [
+   1029,
+   556,
+   19,
+   15
+  ],
+  "policy": "target_first_frame",
+  "p95_ms": 203.33225994254462,
+  "visible": 300,
+  "outputs": 292,
+  "within8": 240,
+  "within16": 273,
+  "within32": 292
+ },
+ {
+  "clip": "dataset1_cam3_3060",
+  "start": 3060,
+  "roi": [
+   1029,
+   556,
+   19,
+   15
+  ],
+  "policy": "target_real",
+  "p95_ms": 203.4515799721703,
+  "visible": 300,
+  "outputs": 256,
+  "within8": 204,
+  "within16": 237,
+  "within32": 256
+ },
+ {
+  "clip": "dataset2_cam0_1094",
+  "start": 1094,
+  "roi": [
+   873,
+   342,
+   29,
+   21
+  ],
+  "policy": "flow",
+  "p95_ms": 219.17337992344983,
+  "visible": 135,
+  "outputs": 135,
+  "within8": 84,
+  "within16": 86,
+  "within32": 86
+ },
+ {
+  "clip": "dataset2_cam0_1094",
+  "start": 1094,
+  "roi": [
+   873,
+   342,
+   29,
+   21
+  ],
+  "policy": "first_frame",
+  "p95_ms": 230.54584006313235,
+  "visible": 135,
+  "outputs": 131,
+  "within8": 80,
+  "within16": 82,
+  "within32": 82
+ },
+ {
+  "clip": "dataset2_cam0_1094",
+  "start": 1094,
+  "roi": [
+   873,
+   342,
+   29,
+   21
+  ],
+  "policy": "target_first_frame",
+  "p95_ms": 226.77523996680978,
+  "visible": 135,
+  "outputs": 107,
+  "within8": 80,
+  "within16": 82,
+  "within32": 82
+ },
+ {
+  "clip": "dataset2_cam0_1094",
+  "start": 1094,
+  "roi": [
+   873,
+   342,
+   29,
+   21
+  ],
+  "policy": "target_real",
+  "p95_ms": 222.47312994441018,
+  "visible": 135,
+  "outputs": 82,
+  "within8": 80,
+  "within16": 82,
+  "within32": 82
+ },
+ {
+  "clip": "dataset2_cam0_2188",
+  "start": 2188,
+  "roi": [
+   1577,
+   151,
+   43,
+   27
+  ],
+  "policy": "flow",
+  "p95_ms": 218.10668498510495,
+  "visible": 36,
+  "outputs": 36,
+  "within8": 16,
+  "within16": 27,
+  "within32": 35
+ },
+ {
+  "clip": "dataset2_cam0_2188",
+  "start": 2188,
+  "roi": [
+   1577,
+   151,
+   43,
+   27
+  ],
+  "policy": "first_frame",
+  "p95_ms": 207.12472496088606,
+  "visible": 36,
+  "outputs": 32,
+  "within8": 12,
+  "within16": 23,
+  "within32": 31
+ },
+ {
+  "clip": "dataset2_cam0_2188",
+  "start": 2188,
+  "roi": [
+   1577,
+   151,
+   43,
+   27
+  ],
+  "policy": "target_first_frame",
+  "p95_ms": 182.0042850333266,
+  "visible": 36,
+  "outputs": 32,
+  "within8": 17,
+  "within16": 23,
+  "within32": 31
+ },
+ {
+  "clip": "dataset2_cam0_2188",
+  "start": 2188,
+  "roi": [
+   1577,
+   151,
+   43,
+   27
+  ],
+  "policy": "target_real",
+  "p95_ms": 182.56171005778018,
+  "visible": 36,
+  "outputs": 32,
+  "within8": 17,
+  "within16": 23,
+  "within32": 31
+ },
+ {
+  "clip": "dataset2_cam0_3501",
+  "start": 3501,
+  "roi": [
+   1859,
+   253,
+   35,
+   25
+  ],
+  "policy": "flow",
+  "p95_ms": 219.69584506587128,
+  "visible": 288,
+  "outputs": 288,
+  "within8": 78,
+  "within16": 95,
+  "within32": 111
+ },
+ {
+  "clip": "dataset2_cam0_3501",
+  "start": 3501,
+  "roi": [
+   1859,
+   253,
+   35,
+   25
+  ],
+  "policy": "first_frame",
+  "p95_ms": 212.3981149925385,
+  "visible": 288,
+  "outputs": 240,
+  "within8": 138,
+  "within16": 159,
+  "within32": 186
+ },
+ {
+  "clip": "dataset2_cam0_3501",
+  "start": 3501,
+  "roi": [
+   1859,
+   253,
+   35,
+   25
+  ],
+  "policy": "target_first_frame",
+  "p95_ms": 185.55562002002264,
+  "visible": 288,
+  "outputs": 48,
+  "within8": 0,
+  "within16": 0,
+  "within32": 0
+ },
+ {
+  "clip": "dataset2_cam0_3501",
+  "start": 3501,
+  "roi": [
+   1859,
+   253,
+   35,
+   25
+  ],
+  "policy": "target_real",
+  "p95_ms": 176.31507006008178,
+  "visible": 288,
+  "outputs": 26,
+  "within8": 0,
+  "within16": 0,
+  "within32": 0
+ },
+ {
+  "clip": "dataset2_cam1_1187",
+  "start": 1187,
+  "roi": [
+   1041,
+   209,
+   32,
+   33
+  ],
+  "policy": "flow",
+  "p95_ms": 171.44622997147962,
+  "visible": 294,
+  "outputs": 294,
+  "within8": 151,
+  "within16": 196,
+  "within32": 241
+ },
+ {
+  "clip": "dataset2_cam1_1187",
+  "start": 1187,
+  "roi": [
+   1041,
+   209,
+   32,
+   33
+  ],
+  "policy": "first_frame",
+  "p95_ms": 178.0521099222824,
+  "visible": 294,
+  "outputs": 249,
+  "within8": 117,
+  "within16": 160,
+  "within32": 205
+ },
+ {
+  "clip": "dataset2_cam1_1187",
+  "start": 1187,
+  "roi": [
+   1041,
+   209,
+   32,
+   33
+  ],
+  "policy": "target_first_frame",
+  "p95_ms": 170.1346949499566,
+  "visible": 294,
+  "outputs": 189,
+  "within8": 87,
+  "within16": 101,
+  "within32": 151
+ },
+ {
+  "clip": "dataset2_cam1_1187",
+  "start": 1187,
+  "roi": [
+   1041,
+   209,
+   32,
+   33
+  ],
+  "policy": "target_real",
+  "p95_ms": 174.8884800239466,
+  "visible": 294,
+  "outputs": 251,
+  "within8": 166,
+  "within16": 186,
+  "within32": 235
+ },
+ {
+  "clip": "dataset2_cam1_2422",
+  "start": 2422,
+  "roi": [
+   690,
+   7,
+   25,
+   23
+  ],
+  "policy": "flow",
+  "p95_ms": 165.4128000256606,
+  "visible": 119,
+  "outputs": 119,
+  "within8": 71,
+  "within16": 71,
+  "within32": 71
+ },
+ {
+  "clip": "dataset2_cam1_2422",
+  "start": 2422,
+  "roi": [
+   690,
+   7,
+   25,
+   23
+  ],
+  "policy": "first_frame",
+  "p95_ms": 165.49938491662036,
+  "visible": 119,
+  "outputs": 113,
+  "within8": 100,
+  "within16": 100,
+  "within32": 100
+ },
+ {
+  "clip": "dataset2_cam1_2422",
+  "start": 2422,
+  "roi": [
+   690,
+   7,
+   25,
+   23
+  ],
+  "policy": "target_first_frame",
+  "p95_ms": 164.19585500843823,
+  "visible": 119,
+  "outputs": 113,
+  "within8": 96,
+  "within16": 96,
+  "within32": 96
+ },
+ {
+  "clip": "dataset2_cam1_2422",
+  "start": 2422,
+  "roi": [
+   690,
+   7,
+   25,
+   23
+  ],
+  "policy": "target_real",
+  "p95_ms": 164.80747003806755,
+  "visible": 119,
+  "outputs": 68,
+  "within8": 68,
+  "within16": 68,
+  "within32": 68
+ },
+ {
+  "clip": "dataset2_cam1_3561",
+  "start": 3561,
+  "roi": [
+   1041,
+   145,
+   24,
+   22
+  ],
+  "policy": "flow",
+  "p95_ms": 172.99281006562524,
+  "visible": 300,
+  "outputs": 300,
+  "within8": 184,
+  "within16": 236,
+  "within32": 286
+ },
+ {
+  "clip": "dataset2_cam1_3561",
+  "start": 3561,
+  "roi": [
+   1041,
+   145,
+   24,
+   22
+  ],
+  "policy": "first_frame",
+  "p95_ms": 165.4644949361682,
+  "visible": 300,
+  "outputs": 288,
+  "within8": 173,
+  "within16": 224,
+  "within32": 274
+ },
+ {
+  "clip": "dataset2_cam1_3561",
+  "start": 3561,
+  "roi": [
+   1041,
+   145,
+   24,
+   22
+  ],
+  "policy": "target_first_frame",
+  "p95_ms": 172.28269499610178,
+  "visible": 300,
+  "outputs": 286,
+  "within8": 198,
+  "within16": 218,
+  "within32": 245
+ },
+ {
+  "clip": "dataset2_cam1_3561",
+  "start": 3561,
+  "roi": [
+   1041,
+   145,
+   24,
+   22
+  ],
+  "policy": "target_real",
+  "p95_ms": 166.91577001474798,
+  "visible": 300,
+  "outputs": 200,
+  "within8": 142,
+  "within16": 170,
+  "within32": 189
+ },
+ {
+  "clip": "dataset2_cam3_1149",
+  "start": 1149,
+  "roi": [
+   1691,
+   12,
+   26,
+   24
+  ],
+  "policy": "flow",
+  "p95_ms": 174.57894000108354,
+  "visible": 300,
+  "outputs": 300,
+  "within8": 275,
+  "within16": 281,
+  "within32": 292
+ },
+ {
+  "clip": "dataset2_cam3_1149",
+  "start": 1149,
+  "roi": [
+   1691,
+   12,
+   26,
+   24
+  ],
+  "policy": "first_frame",
+  "p95_ms": 172.11515507660806,
+  "visible": 300,
+  "outputs": 292,
+  "within8": 267,
+  "within16": 273,
+  "within32": 284
+ },
+ {
+  "clip": "dataset2_cam3_1149",
+  "start": 1149,
+  "roi": [
+   1691,
+   12,
+   26,
+   24
+  ],
+  "policy": "target_first_frame",
+  "p95_ms": 172.30251504806802,
+  "visible": 300,
+  "outputs": 292,
+  "within8": 266,
+  "within16": 271,
+  "within32": 280
+ },
+ {
+  "clip": "dataset2_cam3_1149",
+  "start": 1149,
+  "roi": [
+   1691,
+   12,
+   26,
+   24
+  ],
+  "policy": "target_real",
+  "p95_ms": 174.8762599483598,
+  "visible": 300,
+  "outputs": 207,
+  "within8": 203,
+  "within16": 207,
+  "within32": 207
+ },
+ {
+  "clip": "dataset2_cam3_2166",
+  "start": 2166,
+  "roi": [
+   970,
+   451,
+   21,
+   19
+  ],
+  "policy": "flow",
+  "p95_ms": 173.8523450330831,
+  "visible": 300,
+  "outputs": 300,
+  "within8": 278,
+  "within16": 286,
+  "within32": 298
+ },
+ {
+  "clip": "dataset2_cam3_2166",
+  "start": 2166,
+  "roi": [
+   970,
+   451,
+   21,
+   19
+  ],
+  "policy": "first_frame",
+  "p95_ms": 178.5217600001488,
+  "visible": 300,
+  "outputs": 292,
+  "within8": 270,
+  "within16": 278,
+  "within32": 290
+ },
+ {
+  "clip": "dataset2_cam3_2166",
+  "start": 2166,
+  "roi": [
+   970,
+   451,
+   21,
+   19
+  ],
+  "policy": "target_first_frame",
+  "p95_ms": 176.23213005135767,
+  "visible": 300,
+  "outputs": 292,
+  "within8": 270,
+  "within16": 278,
+  "within32": 290
+ },
+ {
+  "clip": "dataset2_cam3_2166",
+  "start": 2166,
+  "roi": [
+   970,
+   451,
+   21,
+   19
+  ],
+  "policy": "target_real",
+  "p95_ms": 180.82244998659007,
+  "visible": 300,
+  "outputs": 192,
+  "within8": 169,
+  "within16": 170,
+  "within32": 170
+ },
+ {
+  "clip": "dataset2_cam3_3249",
+  "start": 3249,
+  "roi": [
+   637,
+   355,
+   23,
+   18
+  ],
+  "policy": "flow",
+  "p95_ms": 168.1245050742291,
+  "visible": 300,
+  "outputs": 300,
+  "within8": 281,
+  "within16": 286,
+  "within32": 297
+ },
+ {
+  "clip": "dataset2_cam3_3249",
+  "start": 3249,
+  "roi": [
+   637,
+   355,
+   23,
+   18
+  ],
+  "policy": "first_frame",
+  "p95_ms": 171.73071489087306,
+  "visible": 300,
+  "outputs": 292,
+  "within8": 273,
+  "within16": 278,
+  "within32": 289
+ },
+ {
+  "clip": "dataset2_cam3_3249",
+  "start": 3249,
+  "roi": [
+   637,
+   355,
+   23,
+   18
+  ],
+  "policy": "target_first_frame",
+  "p95_ms": 169.85652998555452,
+  "visible": 300,
+  "outputs": 292,
+  "within8": 273,
+  "within16": 278,
+  "within32": 289
+ },
+ {
+  "clip": "dataset2_cam3_3249",
+  "start": 3249,
+  "roi": [
+   637,
+   355,
+   23,
+   18
+  ],
+  "policy": "target_real",
+  "p95_ms": 171.98154010111466,
+  "visible": 300,
+  "outputs": 201,
+  "within8": 182,
+  "within16": 187,
+  "within32": 198
+ }
+]
